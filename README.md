@@ -1,3 +1,16 @@
-# My Awesome Book
+## Lua程序设计
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
+
+
+#### 联系邮箱：380921128@qq.com
+
+
+
+#### 关于本书
+
+
+#### 主版本： beta
+
+#### 网站地址： [shenjun7792.github.io](https://shenjun7792.github.io)
+
+#### 作者： 沈军
