@@ -90,3 +90,22 @@
 接下来便要尝试代码热更新，让程序下载服务器上的lua文件，然后运行它。在说明热更新之前，需要先看看Unity3D热更新的一般方法。如下图所示，Unity3D的热更新会涉及3个目录。
 
 ![](/assets/屏幕快照 2017-11-11 下午1.44.14.png)
+
+
+**游戏包资源目录**：里面包含Unity3D工程中StreamingAssets文件夹下的文件。安装游戏之后，这些文件将会被一字不差地复制到目标机器上的特定文件夹里，不同平台的文件夹不同，如下所示（上图以windows平台为例）
+
+```csharp
+    Mac OS或Windows：Application.dataPath + "/StreamingAssets";
+
+    IOS： Application.dataPath + "/Raw";
+
+    Android：jar:file://" + Application.dataPath + "!/assets/";
+```
+
+
+
+
+
+
+
+
