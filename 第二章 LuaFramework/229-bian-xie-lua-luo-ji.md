@@ -190,3 +190,34 @@
         TestLuaFun.Log()  
     end
 ```
+
+&emsp;
+
+####三、原理
+
+tolua实现了LuaInterface，抛开luaFramework，只需创建lua虚拟机，便能在c#中调用lua代码，如下所示。
+
+```csharp
+    using UnityEngine;
+    using System.Collections;
+    using LuaInterface;
+ 
+    public class test : MonoBehaviour
+    {
+        void Start () 
+        {
+            //初始化
+            LuaState lua = new LuaState();
+            LuaBinder.Bind(lua);
+            //lua代码
+            string luaStr =
+                @"                
+                    print('hello tolua#, 广告招租')
+                    LuaFramework.Util.Log('HelloWorld');
+                    TestLuaFun.Log()                
+                ";
+            //执行lua脚本
+            lua.DoString(luaStr);
+        }
+    } 
+```
