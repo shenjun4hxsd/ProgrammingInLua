@@ -73,7 +73,7 @@
 
 框架中提供了数十个可供lua调用的c#类，但这些往往不够用，需要自己添加，本节将介绍添加自定义API的方法。
 
-1）、编写C#类
+**1）、编写C#类**
 
 例如，编写TestLuaFun.类，它包含一个静态方法Log，会打印出两行文本。
 
@@ -91,7 +91,7 @@
     }
 ```
 
-2）、修改CustomSetting
+**2）、修改CustomSetting**
 
 打开CustomSetting.cs，在customTypeList中添加一句“_GT(typeof(TestLuaFun))”。
 
