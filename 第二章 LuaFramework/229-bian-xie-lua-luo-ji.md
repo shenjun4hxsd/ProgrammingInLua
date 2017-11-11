@@ -114,3 +114,7 @@
         _GT(typeof(TestLuaFunc)),
     }
 ```
+
+**3）、生成wrap文件**
+
+点击菜单栏的Lua→Clear wrap files和Lua→Generate All，重新生成wrap文件。由于刚刚在customTypeList添加了类，所以会生成TestLuaFun类的wrap文件TestLuaFunWrap.cs。
