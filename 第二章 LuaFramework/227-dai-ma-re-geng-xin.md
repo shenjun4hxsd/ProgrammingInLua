@@ -306,7 +306,7 @@ LuaFramework的热更新代码定义在`Assets\LuaFramework\Scripts\Manager\Game
 
 > 打包资源需要确认AppConst
 
-```csharp
+>```csharp
     public const bool ExampleMode = true;                       //例子模式 
 ```
 
