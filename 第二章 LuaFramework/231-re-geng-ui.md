@@ -95,9 +95,7 @@ c#中可以使用事件监听的方法给UI组件添加事件。例如，添加�
     end
 
     function OnClick()
-
         print("触发按钮事件")
-
     end
 ```
 
@@ -108,3 +106,44 @@ c#中可以使用事件监听的方法给UI组件添加事件。例如，添加�
 ####三、界面管理器
 
 LuaFramework提供了一套简单的（不完善的）界面管理器，具体代码请参见PanelManager类。PanelManager类的CreatePanel方法完成异步加载资源，在加载完成后，会设置面板的大小和位置，然后调用回调函数。与上面用lua加载界面的方法完全一样。
+
+```csharp
+    public void CreatePanel(string name, LuaFunction func = null) {
+        string assetName = name + "Panel";
+        string abName = name.ToLower() + AppConst.ExtName;
+        if (Parent.Find(name) != null) return;
+
+#if ASYNC_MODE
+        ResManager.LoadPrefab(abName, assetName, delegate(UnityEngine.Object[] objs) {
+            if (objs.Length == 0) return;
+            GameObject prefab = objs[0] as GameObject;
+            if (prefab == null) return;
+
+            GameObject go = Instantiate(prefab) as GameObject;
+            go.name = assetName;
+            go.layer = LayerMask.NameToLayer("Default");
+            go.transform.SetParent(Parent);
+            go.transform.localScale = Vector3.one;
+            go.transform.localPosition = Vector3.zero;
+            go.AddComponent<LuaBehaviour>();
+
+            if (func != null) func.Call(go);
+                Debug.LogWarning("CreatePanel::>> " + name + " " + prefab);
+        });
+#else
+        GameObject prefab = ResManager.LoadAsset<GameObject>(name, assetName);
+        if (prefab == null) return;
+
+        GameObject go = Instantiate(prefab) as GameObject;
+        go.name = assetName;
+        go.layer = LayerMask.NameToLayer("Default");
+        go.transform.SetParent(Parent);
+        go.transform.localScale = Vector3.one;
+        go.transform.localPosition = Vector3.zero;
+        go.AddComponent<LuaBehaviour>();
+
+        if (func != null) func.Call(go);
+            Debug.LogWarning("CreatePanel::>> " + name + " " + prefab);
+#endif
+    }
+```
