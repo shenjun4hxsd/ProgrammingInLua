@@ -47,4 +47,5 @@
   * [2.24 Performance](第二章 LuaFramework/2_24 Performance.md)
   * [2.25 TestErrorStack](第二章 LuaFramework/2_25 TestErrorStack.md)
   * [2.26 TestOverload](第二章 LuaFramework/2_26 TestOverload.md)
+  * [2.27 代码热更新](第二章 LuaFramework/227-dai-ma-re-geng-xin.md)
 
