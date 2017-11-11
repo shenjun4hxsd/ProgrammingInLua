@@ -109,6 +109,53 @@ LuaFramework在打包方面并没有做太多的工作，我们需要手动打�
             AssetBundle bundle = LoadAssetBundle(abname);
             return bundle.LoadAsset<T>(assetname);
     }
+    
+    /// <summary>
+        /// 载入AssetBundle
+        /// </summary>
+        /// <param name="abname"></param>
+        /// <returns></returns>
+        public AssetBundle LoadAssetBundle(string abname) {
+            if (!abname.EndsWith(AppConst.ExtName)) {
+                abname += AppConst.ExtName;
+            }
+            AssetBundle bundle = null;
+            if (!bundles.ContainsKey(abname)) {
+                byte[] stream = null;
+                string uri = Util.DataPath + abname;
+                Debug.LogWarning("LoadFile::>> " + uri);
+                LoadDependencies(abname);
+
+                stream = File.ReadAllBytes(uri);
+                bundle = AssetBundle.LoadFromMemory(stream); //关联数据的素材绑定
+                bundles.Add(abname, bundle);
+            } else {
+                bundles.TryGetValue(abname, out bundle);
+            }
+            return bundle;
+        }
+
+        /// <summary>
+        /// 载入依赖
+        /// </summary>
+        /// <param name="name"></param>
+        void LoadDependencies(string name) {
+            if (manifest == null) {
+                Debug.LogError("Please initialize AssetBundleManifest by calling AssetBundleManager.Initialize()");
+                return;
+            }
+            // Get dependecies from the AssetBundleManifest object..
+            string[] dependencies = manifest.GetAllDependencies(name);
+            if (dependencies.Length == 0) return;
+
+            for (int i = 0; i < dependencies.Length; i++)
+                dependencies[i] = RemapVariantName(dependencies[i]);
+
+            // Record and load all dependencies.
+            for (int i = 0; i < dependencies.Length; i++) {
+                LoadAssetBundle(dependencies[i]);
+            }
+    }
 ```
 
 LoadPrefab的流程如下所示，先是判定当前是否正在加载该资源包，如果没有则调用OnLoadAsset加载资源包、然后解包获取资源、调用回调函数。
