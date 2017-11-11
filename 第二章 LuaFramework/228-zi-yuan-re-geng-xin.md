@@ -100,6 +100,15 @@ LuaFramework在打包方面并没有做太多的工作，我们需要手动打�
             }
             if (func != null) func.Call((object)result.ToArray());
     }
+    
+    /// <summary>
+    /// 载入素材
+    /// </summary>
+    public T LoadAsset<T>(string abname, string assetname) where T : UnityEngine.Object {
+            abname = abname.ToLower();
+            AssetBundle bundle = LoadAssetBundle(abname);
+            return bundle.LoadAsset<T>(assetname);
+    }
 ```
 
 LoadPrefab的流程如下所示，先是判定当前是否正在加载该资源包，如果没有则调用OnLoadAsset加载资源包、然后解包获取资源、调用回调函数。
