@@ -4,10 +4,11 @@
 
 基于组件的编程模式是Unity3D的核心思想之一，然而使用纯lua编程，基本就破坏了这一模式。那么有没有办法做一些封装，让Lua脚本也能挂载到游戏物体上，作为组件呢？
 
+&emsp;
+
 ####一、设计思想
 
 在需要添加Lua组件的游戏物体上添加一个LuaComponent组件，LuaComponent引用一个lua表，这个lua表包含lua组件的各种属性以及Awake、Start等函数，由LuaComponent适时调用Lua表所包含的函数。
-
 
 ```csharp
     /*
@@ -104,3 +105,9 @@
         return o
     end  
 ```
+
+&emsp;
+
+####二、LuaComponent 组件
+
+LuaComponent主要有Get和Add两个静态方法，其中Get相当于UnityEngine中的GetComponent方法，Add相当于AddComponent方法，只不过这里添加的是lua组件不是c#组件。每个LuaComponent拥有一个LuaTable（lua表）类型的变量table，它既引用上述的Component表。
