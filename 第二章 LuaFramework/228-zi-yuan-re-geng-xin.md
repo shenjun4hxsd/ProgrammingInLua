@@ -90,3 +90,17 @@ LuaFramework在打包方面并没有做太多的工作，我们需要手动打�
 
 只有理解了动态加载，即LoadPrefab的过程，才能算是真正的理解了热更新。LoadPrefab为ResourceManager中定义的方法，在Assets\LuaFramework\Scripts\Manager\ResourceManager.cs中实现，建议配合代码看下面的解释。
 
+```csharp
+     public void LoadPrefab(string abName, string[] assetNames, LuaFunction func) {
+            abName = abName.ToLower();
+            List<UObject> result = new List<UObject>();
+            for (int i = 0; i < assetNames.Length; i++) {
+                UObject go = LoadAsset<UObject>(abName, assetNames[i]);
+                if (go != null) result.Add(go);
+            }
+            if (func != null) func.Call((object)result.ToArray());
+        }
+```
+
+LoadPrefab的流程如下所示，先是判定当前是否正在加载该资源包，如果没有则调用OnLoadAsset加载资源包、然后解包获取资源、调用回调函数。
+
