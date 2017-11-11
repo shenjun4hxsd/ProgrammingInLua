@@ -24,10 +24,4 @@
     end
 ```
 
-function Main()                                 
-    UpdateBeat:Add(Update, self)
-end
- 
-function Update()
-        LuaFramework.Util.Log("每帧执行一次");
-end
+除了UpdateBeat，tolua还提供了LateUpdateBeat和FixedUpdateBeat，对应于Monobehaviour中的LateUpdate和FixedUpdate。
