@@ -86,7 +86,6 @@ c#中可以使用事件监听的方法给UI组件添加事件。例如，添加�
     end
 
     --加载完成后的回调--
-
     function OnLoadFinish(objs)
         --显示面板
         略
