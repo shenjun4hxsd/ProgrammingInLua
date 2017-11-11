@@ -129,52 +129,52 @@
 
     public class TestLuaFuncWrap
     {
-	public static void Register(LuaState L)
-	{
-		L.BeginClass(typeof(TestLuaFunc), typeof(System.Object));
-		L.RegFunction("Log", Log);
-		L.RegFunction("New", _CreateTestLuaFunc);
-		L.RegFunction("__tostring", ToLua.op_ToString);
-		L.EndClass();
-	}
+        public static void Register(LuaState L)
+        {
+            L.BeginClass(typeof(TestLuaFunc), typeof(System.Object));
+            L.RegFunction("Log", Log);
+            L.RegFunction("New", _CreateTestLuaFunc);
+            L.RegFunction("__tostring", ToLua.op_ToString);
+            L.EndClass();
+        }
 
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int _CreateTestLuaFunc(IntPtr L)
-	{
-		try
-		{
-			int count = LuaDLL.lua_gettop(L);
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _CreateTestLuaFunc(IntPtr L)
+        {
+            try
+            {
+                int count = LuaDLL.lua_gettop(L);
 
-			if (count == 0)
-			{
-				TestLuaFunc obj = new TestLuaFunc();
-				ToLua.PushObject(L, obj);
-				return 1;
-			}
-			else
-			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: TestLuaFunc.New");
-			}
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
+                if (count == 0)
+                {
+                    TestLuaFunc obj = new TestLuaFunc();
+                    ToLua.PushObject(L, obj);
+                    return 1;
+                }
+                else
+                {
+                    return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: TestLuaFunc.New");
+                }
+            }
+            catch (Exception e)
+            {
+                return LuaDLL.toluaL_exception(L, e);
+            }
+        }
 
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Log(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 0);
-			TestLuaFunc.Log();
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int Log(IntPtr L)
+        {
+            try
+            {
+                ToLua.CheckArgsCount(L, 0);
+                TestLuaFunc.Log();
+                return 0;
+            }
+            catch (Exception e)
+            {
+                return LuaDLL.toluaL_exception(L, e);
+            }
+        }
     }
 ```
