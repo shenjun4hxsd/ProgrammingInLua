@@ -12,3 +12,14 @@
 
 1）、Update 方法
 
+出于效率的考虑，tolua提供了名为UpdateBeat的对象，在LuaFramework中，只需给UpdateBeat添加回调函数，该函数便会每帧执行，相当于Monobehaviour的Update方法。Lua代码如下所示：
+
+```lua
+    function Main()                                 
+        UpdateBeat:Add(Update, self)
+    end
+  
+    function Update()
+        LuaFramework.Util.Log("每帧执行一次");
+    end
+```
