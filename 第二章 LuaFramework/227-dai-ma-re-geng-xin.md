@@ -111,9 +111,9 @@
 
     调试模式下：Application.dataPath + "/StreamingAssets/"
 ```
+>注：”LuaFramework”和”StreamingAssets”由配置决定，这里取默认值
 
-
-
+**网络资源地址**：存放游戏资源的网址，游戏开启后，程序会从网络资源地址下载一些更新的文件到数据目录。
 
 
 
