@@ -51,4 +51,5 @@
   * [2.28 资源热更新](第二章 LuaFramework/228-zi-yuan-re-geng-xin.md)
   * [2.29 编写Lua逻辑](第二章 LuaFramework/229-bian-xie-lua-luo-ji.md)
   * [2.30 Lua组件](第二章 LuaFramework/230-luazu-jian.md)
+  * [2.31 热更UI](第二章 LuaFramework/231-re-geng-ui.md)
 
