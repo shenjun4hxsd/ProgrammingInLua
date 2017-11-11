@@ -9,7 +9,6 @@
 在需要添加Lua组件的游戏物体上添加一个LuaComponent组件，LuaComponent引用一个lua表，这个lua表包含lua组件的各种属性以及Awake、Start等函数，由LuaComponent适时调用Lua表所包含的函数。
 
 
-
 ```csharp
     /*
      *  created by shenjun
@@ -81,3 +80,27 @@
 
 下面列举lua组件的文件格式，它包含一个表（如Component），这个表包含property1 、property2 等属性，包含Awake、Start等方法。表中必须包含用于派生对象的New方法，它会创建一个继承自Component的表o，供LuaComponent调用。
 
+```lua
+    Component=    --组件表
+    ​{
+            property1 = 100,
+            property2 = “helloWorld”
+    }
+    
+    function Component:Awake() 
+        print("TankCmp Awake name = "..self.name );
+    end
+    
+    function Component:Start() 
+        print("TankCmp Start name = "..self.name );
+    End
+    
+    --更多方法略
+    
+    function Component:New(obj) 
+        local o = {} 
+        setmetatable(o, self)  
+        self.__index = self  
+        return o
+    end  
+```
