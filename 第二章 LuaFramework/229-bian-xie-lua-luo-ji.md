@@ -73,4 +73,20 @@
 
 框架中提供了数十个可供lua调用的c#类，但这些往往不够用，需要自己添加，本节将介绍添加自定义API的方法。
 
-1）、
+1）、编写C#类
+
+例如，编写TestLuaFun.类，它包含一个静态方法Log，会打印出两行文本。
+
+```csharp
+    using UnityEngine;
+    using System.Collections;
+ 
+    public class TestLuaFun 
+    {
+        public static void Log() 
+        {
+                Debug.Log("《Unity3D网络游戏实战》是一本好书！");
+                Debug.Log("《手把手教你用c#制作rpg游戏》也是一本好书！");
+        }
+    }
+```
