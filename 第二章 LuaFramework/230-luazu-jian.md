@@ -226,3 +226,7 @@ Main.lua先加载坦克模型，然后给他添加lua组件，代码如下：
         LuaComponent.Add(go,TankCmp)
     end
 ```
+
+运行游戏，即可用键盘的控制坦克移动。
+
+🔚
