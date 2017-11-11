@@ -63,3 +63,5 @@
             go.transform.position = Vector3.New(x,0,z)
     end
 ```
+
+运行游戏，即可用键盘的控制坦克移动。
