@@ -102,7 +102,15 @@
     Android：jar:file://" + Application.dataPath + "!/assets/";
 ```
 
+**数据目录**：由于“游戏资源目录”在Android和IOS上是只读的，不能把网上的下载的资源放到里面，所以需要建立一个“数据目录”，该目录可读可写。第一次开启游戏后，程序将“游戏资源目录”的内容复制到“数据目录中”（步骤1，这个步骤只会执行一次，下次再打开游戏就不复制了）。游戏过程中的资源加载，都是从“数据目录”中获取、解包（步骤3）。不同平台下，“数据目录”的地址也不同，LuaFramework的定义如下：
 
+```csharp
+    Android或IOS：Application.persistentDataPath + "/LuaFramework"    
+
+    Mac OS或Windows：c:/LuaFramework/
+
+    调试模式下：Application.dataPath + "/StreamingAssets/"
+```
 
 
 
