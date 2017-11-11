@@ -21,3 +21,15 @@
     }
 ```
 
+####三、编写lua代码
+
+打开Assets\LuaFramework\Lua\main.lua，编写lua代码。这里只添加一句“LuaFramework.Util.Log("HelloWorld");”（如下所示），它的功能相当于Debug.Log("HelloWorld")。
+
+```csharp
+    --主入口函数。从这里开始lua逻辑
+    function Main()
+
+        LuaFramework.Util.Log("HelloWorld");
+
+    end
+```
