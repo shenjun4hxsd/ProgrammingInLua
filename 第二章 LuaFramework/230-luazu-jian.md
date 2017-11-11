@@ -193,7 +193,7 @@ Get方法使用GetComponents获取游戏对象上的所有LuaComponent（一个�
         local horizontal = Input.GetAxis("Horizontal");
         local vertical = Input.GetAxis("Vertical");
         local x = gameObject.transform.position.x + horizontal
-        local z = gameObject.transform.position.z + verticla
+        local z = gameObject.transform.position.z + vertical
         gameObject.transform.position = Vector3.New(x,0,z)
     end
 
@@ -206,4 +206,23 @@ Get方法使用GetComponents获取游戏对象上的所有LuaComponent（一个�
         self.__index = self  
         return o
     end  
+```
+
+Main.lua先加载坦克模型，然后给他添加lua组件，代码如下：
+
+```lua
+    require "TankCmp"
+    
+    --主入口函数。从这里开始lua逻辑
+    function Main(
+        LuaHelper = LuaFramework.LuaHelper;
+        resMgr = LuaHelper.GetResManager();
+        resMgr:LoadPrefab('tank', { 'TankPrefab' }, OnLoadFinish);
+    end
+    
+    --加载完成后的回调--
+    function OnLoadFinish(objs)
+        go = UnityEngine.GameObject.Instantiate(objs[0]);
+        LuaComponent.Add(go,TankCmp)
+    end
 ```
