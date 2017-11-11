@@ -193,6 +193,61 @@ LuaFramework的热更新代码定义在`Assets\LuaFramework\Scripts\Manager\Game
 
 > 打开IIS，win + R > inetMgr
 
+```csharp
+    // index.html
+    <!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        Hello MyFrameWork!
+    </body>
+    </html>
+```
+
+```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Script.Serialization;
+    
+    namespace MyHotUpdateWebTest
+    {
+        /// <summary>
+        /// Login 的摘要说明
+        /// </summary>
+        public class Login : IHttpHandler
+        {
+    
+            public void ProcessRequest(HttpContext context)
+            {
+                context.Response.ContentType = "text/plain";
+                //context.Response.Write("Hello World");
+    
+                Dictionary<string, object> dic = new Dictionary<string, object>();
+                dic["result"] = "success";
+    
+                JavaScriptSerializer jss = new JavaScriptSerializer();
+                string result = jss.Serialize(dic);
+                context.Response.Write(result);
+                context.Response.End();
+            }
+    
+            public bool IsReusable
+            {
+                get
+                {
+                    return false;
+                }
+            }
+        }
+    }
+```
+
 3）、测试热更新
 
 改一下Lua脚本（如将HelloWorld改为Hello Lpy2），点击Build Windows Resource，将“工程目录/StreamingAssets”里面的文件复制到服务器上。再将脚本改成其他内容，然后Build Windows Resource，覆盖掉本地资源。运行游戏，如果程序显示“Hello Lpy2”的代码，证明成功从网上拉取了文件。
