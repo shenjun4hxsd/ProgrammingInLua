@@ -111,7 +111,7 @@
 
     调试模式下：Application.dataPath + "/StreamingAssets/"
 ```
->注：”LuaFramework”和”StreamingAssets”由配置决定，这里取默认值
+>注：“LuaFramework”和“StreamingAssets”由配置决定，这里取默认值
 
 **网络资源地址**：存放游戏资源的网址，游戏开启后，程序会从网络资源地址下载一些更新的文件到数据目录。
 
@@ -131,4 +131,19 @@
     tank.unity3d|a5f10487d490d13642d40fce937c195c
     tank.unity3d.manifest|202261f1e418ab2bbb8384ed6f54f958
     lua/Build.bat|4cfc2f258ecdb9bb43756a2e737c7a1d
+```
+
+
+LuaFramework的热更新代码定义在`Assets\LuaFramework\Scripts\Manager\GameManager.cs`，真正用到项目时可能还需少许改动。
+
+####六、开始热更新代码
+
+那么开始测试热更新代码的功能吧！热更上述实现的“HelloWorld”。
+
+1）、修改配置
+
+框架的默认配置是从本地加载文件，需要打开AppConst.cs将UpdateMode设置为true（才会执行步骤2），将LuaBundleMode设置为true，将WebUrl设置成服务器地址。
+
+```csharp
+
 ```
