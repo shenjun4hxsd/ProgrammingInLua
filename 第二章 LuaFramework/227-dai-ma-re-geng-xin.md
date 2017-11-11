@@ -6,10 +6,10 @@
 
 ####二、删掉事例的调用
 
-现在不需要框架自带的示例了，需要删掉一些代码，使框架只运行我们编写的lua文件。打开`Assets\LuaFramework\Scripts\Manager\GameManager.cs`，将`OnInitalize`修改成下图这个样子。这是lua的入口，框架会调用Main.lua的Main方法。
+现在不需要框架自带的示例了，需要删掉一些代码，使框架只运行我们编写的lua文件。打开`Assets\LuaFramework\Scripts\Manager\GameManager.cs`，将`OnInitalize`修改成下图这个样子。这是lua的入口，框架会调用`Main.lua`的`Main`方法。
 
 ```csharp
-    void OnInitialize1() {
+    void OnInitialize() {
         LuaManager.InitStart();
         // LuaManager.DoFile("Logic/Game");         //加载游戏
         // LuaManager.DoFile("Logic/Network");      //加载网络
