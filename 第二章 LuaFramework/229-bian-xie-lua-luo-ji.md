@@ -35,8 +35,8 @@
 ```lua
     local go; --加载的坦克模型
     
-    --主入口函数。从这里开始lua逻辑function Main()
-                                            
+    --主入口函数。从这里开始lua逻辑
+    function Main()       
             LuaHelper = LuaFramework.LuaHelper;
             resMgr = LuaHelper.GetResManager();
             resMgr:LoadPrefab('tank', { 'TankPrefab' }, OnLoadFinish);
