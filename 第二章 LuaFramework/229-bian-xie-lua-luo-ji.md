@@ -25,3 +25,41 @@
 ```
 
 除了UpdateBeat，tolua还提供了LateUpdateBeat和FixedUpdateBeat，对应于Monobehaviour中的LateUpdate和FixedUpdate。
+
+&emsp;
+
+2）、控制坦克
+
+现在编写“用键盘控制坦克移动”的lua代码，加载坦克模型后，使用UpdateBeat注册每帧执行的Update方法，然后在Update方法中调用UnityEngine.Input等API实现功能。代码如下：
+
+```lua
+    local go; --加载的坦克模型
+    
+    --主入口函数。从这里开始lua逻辑function Main()
+                                            
+            LuaHelper = LuaFramework.LuaHelper;
+            resMgr = LuaHelper.GetResManager();
+            resMgr:LoadPrefab('tank', { 'TankPrefab' }, OnLoadFinish);
+    end
+     
+    --加载完成后的回调--
+    function OnLoadFinish(objs)
+            go = UnityEngine.GameObject.Instantiate(objs[0]);
+            LuaFramework.Util.Log("LoadFinish");
+            
+            UpdateBeat:Add(Update, self)
+    end
+     
+    --每帧执行
+    function Update()
+            LuaFramework.Util.Log("每帧执行");
+            
+            local Input = UnityEngine.Input;
+            local horizontal = Input.GetAxis("Horizontal");
+            local verticla = Input.GetAxis("Vertical");
+            
+            local x = go.transform.position.x + horizontal
+            local z = go.transform.position.z + verticla
+            go.transform.position = Vector3.New(x,0,z)
+    end
+```
