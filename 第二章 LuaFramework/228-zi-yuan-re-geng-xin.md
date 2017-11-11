@@ -56,3 +56,21 @@ LuaFramework在打包方面并没有做太多的工作，我们需要手动打�
 ####三、动态加载模型
 
 如下图所示，Unity3D资源包里面包含多个资源，就像一个压缩文件一样。在动态加载的时候，便需要有加载包文件、或取包中的资源两步操作（框架已经帮我们做好了这部分工作，直接调用API即可）。
+
+
+```lua
+    --主入口函数。从这里开始lua逻辑
+    function Main()                                 
+            LuaHelper = LuaFramework.LuaHelper;
+            resMgr = LuaHelper.GetResManager();
+            resMgr:LoadPrefab('tank', { 'TankPrefab' }, OnLoadFinish);
+    end
+    
+    --加载完成后的回调--
+    function OnLoadFinish(objs)
+            local go = UnityEngine.GameObject.Instantiate(objs[0]);
+            LuaFramework.Util.Log("Finish");        
+    
+    
+    end
+```
