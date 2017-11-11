@@ -115,3 +115,40 @@ LuaComponent主要有Get和Add两个静态方法，其中Get相当于UnityEngine
 Add方法使用AddComponent添加LuaComponent，调用参数中lua表的New方法，将其返回的表赋予table。
 
 Get方法使用GetComponents获取游戏对象上的所有LuaComponent（一个游戏对象可能包含多个lua组件，由参数table决定需要获取哪一个），通过元表地址找到对应的LuaComponent，返回lua表。
+
+&emsp;
+
+####三、调试LuaComponent
+
+现在编写名为TankCmp的lua组件，测试LuaCompomemt的功能，TankCmp会在Awake、Start和Update打印出属性name。TankCmp.lua的代码如下：
+
+```lua
+    TankCmp =
+    {
+        --里面可以放一些属性
+        Hp = 100,
+        att = 50,
+        name = "good tank",
+    }
+
+    function TankCmp:Awake()
+        print("TankCmp Awake name = "..self.name );
+
+    end
+
+    function TankCmp:Start()
+        print("TankCmp Start name = "..self.name );
+    end
+
+    function TankCmp:Update()
+        print("TankCmp Update name = "..self.name );
+    end
+
+    --创建对象
+    function TankCmp:New(obj)
+        local o = {}
+        setmetatable(o, self)  
+        self.__index = self  
+        return o
+    end  
+```
