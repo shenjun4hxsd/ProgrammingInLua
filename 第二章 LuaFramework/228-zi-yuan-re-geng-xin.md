@@ -183,3 +183,31 @@ LuaFramework在打包方面并没有做太多的工作，我们需要手动打�
     string[] dependencies = manifest.GetAllDependencies(name);
 ```
 
+字典类型的bundles保存了所有已经加载资源包。如果某个包已经被加载过，那下次需要用到它时，直接从字典中取出即可，减少重复加载。简化后的代码如下：
+
+```csharp
+    /// <summary>
+    /// 载入AssetBundle
+    /// </summary>
+    /// <param name="abname"></param>
+    /// <returns></returns>
+    public AssetBundle LoadAssetBundle(string abname) {
+        if (!abname.EndsWith(AppConst.ExtName)) {
+            abname += AppConst.ExtName;
+        }
+        AssetBundle bundle = null;
+        if (!bundles.ContainsKey(abname)) {
+            byte[] stream = null;
+            string uri = Util.DataPath + abname;
+            Debug.LogWarning("LoadFile::>> " + uri);
+            LoadDependencies(abname);
+
+            stream = File.ReadAllBytes(uri);
+            bundle = AssetBundle.LoadFromMemory(stream); //关联数据的素材绑定
+            bundles.Add(abname, bundle);
+        } else {
+            bundles.TryGetValue(abname, out bundle);
+        }
+        return bundle;
+    }
+```
