@@ -196,6 +196,7 @@ LuaFramework的热更新代码定义在`Assets\LuaFramework\Scripts\Manager\Game
 创建ASP.NET项目 MyHotUpdateWebTest
 
 添加index.html
+
 ```csharp
     // index.html
     <!DOCTYPE html>
@@ -210,6 +211,8 @@ LuaFramework的热更新代码定义在`Assets\LuaFramework\Scripts\Manager\Game
     </body>
     </html>
 ```
+
+添加一般处理程序
 
 ```csharp
     using System;
@@ -250,6 +253,8 @@ LuaFramework的热更新代码定义在`Assets\LuaFramework\Scripts\Manager\Game
         }
     }
 ```
+
+配置Web.config
 
 ```csharp
     <?xml version="1.0" encoding="utf-8"?>
