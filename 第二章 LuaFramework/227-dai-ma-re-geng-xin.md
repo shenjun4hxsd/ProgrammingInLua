@@ -74,4 +74,14 @@
         }
 ```
 
+####四、运行游戏
+
+点击菜单栏中LuaFramework→Build Windows Resource，生成资源文件。然后运行游戏，即可在控制台中看到打印出的HelloWorld。
+
+按照默认的设置，每更改一次lua代码，都需要执行Build XXX Resource才能生效。读者可以将Assets\LuaFramework\Scripts\ConstDefine\AppConst.cs中的LuaBundleMode修改为false，这样代码文件便不会以AssetBundle模式读取，会直接生效，以方便调试。
+
+```csharp
+    //Lua代码AssetBundle模式
+    public const bool LuaBundleMode = false;
+```
 
