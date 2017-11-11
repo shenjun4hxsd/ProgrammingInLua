@@ -23,3 +23,11 @@
         LuaFramework.Util.Log("每帧执行一次");
     end
 ```
+
+function Main()                                 
+    UpdateBeat:Add(Update, self)
+end
+ 
+function Update()
+        LuaFramework.Util.Log("每帧执行一次");
+end
