@@ -189,6 +189,8 @@ LuaFramework的热更新代码定义在`Assets\LuaFramework\Scripts\Manager\Game
 
 > IIS是一种Web（网页）服务组件，其中包括Web服务器、FTP服务器、NNTP服务器和SMTP服务器，分别用于网页浏览、文件传输、新闻服务和邮件发送等方面，它使得在网络（包括互联网和局域网）上发布信息成了一件很容易的事。
 
+> 控制面板 > 程序和功能 > 启用或关闭Windows功能 > 开启 “Internet Information Services”。
+
 3）、测试热更新
 
 改一下Lua脚本（如将HelloWorld改为Hello Lpy2），点击Build Windows Resource，将“工程目录/StreamingAssets”里面的文件复制到服务器上。再将脚本改成其他内容，然后Build Windows Resource，覆盖掉本地资源。运行游戏，如果程序显示“Hello Lpy2”的代码，证明成功从网上拉取了文件。
