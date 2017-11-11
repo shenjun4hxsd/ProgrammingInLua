@@ -83,8 +83,8 @@
 ```lua
     Component=    --组件表
     ​{
-            property1 = 100,
-            property2 = “helloWorld”
+        property1 = 100,
+        property2 = “helloWorld”
     }
     
     function Component:Awake() 
