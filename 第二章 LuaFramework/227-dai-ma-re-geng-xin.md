@@ -187,3 +187,8 @@ LuaFramework的热更新代码定义在`Assets\LuaFramework\Scripts\Manager\Game
 
 2）、配置“网络资源”
 
+
+3）、测试热更新
+
+
+
