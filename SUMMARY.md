@@ -49,4 +49,5 @@
   * [2.26 TestOverload](第二章 LuaFramework/2_26 TestOverload.md)
   * [2.27 代码热更新](第二章 LuaFramework/227-dai-ma-re-geng-xin.md)
   * [2.28 资源热更新](第二章 LuaFramework/228-zi-yuan-re-geng-xin.md)
+  * [2.29 编写Lua逻辑](第二章 LuaFramework/229-bian-xie-lua-luo-ji.md)
 
