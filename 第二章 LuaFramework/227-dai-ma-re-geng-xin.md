@@ -281,3 +281,8 @@ LuaFramework的热更新代码定义在`Assets\LuaFramework\Scripts\Manager\Game
 
 改一下Lua脚本（如将HelloWorld改为Hello Lpy2），点击Build Windows Resource，将“工程目录/StreamingAssets”里面的文件复制到服务器上。再将脚本改成其他内容，然后Build Windows Resource，覆盖掉本地资源。运行游戏，如果程序显示“Hello Lpy2”的代码，证明成功从网上拉取了文件。
 
+> 打包资源需要确认AppConst
+
+```csharp
+    public const bool ExampleMode = true;                       //例子模式 
+```
