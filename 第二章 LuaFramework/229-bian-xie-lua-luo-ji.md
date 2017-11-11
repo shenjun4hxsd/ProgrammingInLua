@@ -85,8 +85,8 @@
     {
         public static void Log() 
         {
-                Debug.Log("《Unity3D网络游戏实战》是一本好书！");
-                Debug.Log("《手把手教你用c#制作rpg游戏》也是一本好书！");
+            Debug.Log("《Unity3D网络游戏实战》是一本好书！");
+            Debug.Log("《手把手教你用c#制作rpg游戏》也是一本好书！");
         }
     }
 ```
