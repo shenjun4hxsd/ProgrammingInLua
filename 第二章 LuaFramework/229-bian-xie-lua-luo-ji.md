@@ -90,3 +90,25 @@
         }
     }
 ```
+
+2）、修改CustomSetting
+
+打开CustomSetting.cs，在customTypeList中添加一句“_GT(typeof(TestLuaFun))”。
+
+```csharp
+    //在这里添加你要导出注册到lua的类型列表
+    public static BindType[] customTypeList =
+    {
+        _GT(typeof(GameManager)),
+        _GT(typeof(LuaManager)),
+        _GT(typeof(PanelManager)),
+        _GT(typeof(SoundManager)),
+        _GT(typeof(TimerManager)),
+        _GT(typeof(ThreadManager)),
+        _GT(typeof(NetworkManager)),
+        _GT(typeof(ResourceManager)),
+
+        // 在这里添加导出注册到lua的类型类标
+        _GT(typeof(TestLuaFunc)),
+    }
+```
