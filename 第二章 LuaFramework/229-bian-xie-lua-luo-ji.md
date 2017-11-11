@@ -178,3 +178,15 @@
         }
     }
 ```
+
+4）、测试API
+
+
+修改main.lua，调用TestLuaFun.Log() ，即可看到效果。
+
+```lua
+    --主入口函数。从这里开始lua逻辑
+    function Main()                                 
+        TestLuaFun.Log()  
+    end
+```
