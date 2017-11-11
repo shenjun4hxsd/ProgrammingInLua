@@ -193,6 +193,9 @@ LuaFramework的热更新代码定义在`Assets\LuaFramework\Scripts\Manager\Game
 
 > 打开IIS，win + R > inetMgr
 
+创建ASP.NET项目 MyHotUpdateWebTest
+
+添加index.html
 ```csharp
     // index.html
     <!DOCTYPE html>
@@ -246,6 +249,27 @@ LuaFramework的热更新代码定义在`Assets\LuaFramework\Scripts\Manager\Game
             }
         }
     }
+```
+
+```csharp
+    <?xml version="1.0" encoding="utf-8"?>
+    <!--
+      有关如何配置 ASP.NET 应用程序的详细信息，请访问
+      http://go.microsoft.com/fwlink/?LinkId=169433
+      -->
+    <configuration>
+      <system.web>
+        <compilation debug="true" targetFramework="4.5" />
+        <httpRuntime targetFramework="4.5" />
+      </system.web>
+      <system.webServer>
+        <staticContent>
+          <mimeMap fileExtension=".list" mimeType="application/octet-stream" />
+          <mimeMap fileExtension=".ab" mimeType="application/octet-stream" />
+        </staticContent>
+        <directoryBrowse enabled ="true" />
+      </system.webServer>
+    </configuration>
 ```
 
 3）、测试热更新
