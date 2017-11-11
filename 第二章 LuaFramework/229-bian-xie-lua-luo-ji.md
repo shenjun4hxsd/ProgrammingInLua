@@ -99,6 +99,8 @@
     //在这里添加你要导出注册到lua的类型列表
     public static BindType[] customTypeList =
     {
+        // ...
+        
         _GT(typeof(GameManager)),
         _GT(typeof(LuaManager)),
         _GT(typeof(PanelManager)),
