@@ -223,3 +223,24 @@ tolua实现了LuaInterface，抛开luaFramework，只需创建lua虚拟机，便
 ```
 
 实际上LuaFramework也是用了相似的方法，框架启动后，会创建LuaManager、LuaLooper的实例。LuaManager创建lua虚拟机并调用Main.lua的Main方法，LuaLooper处理了UpdateBeat相关的事情。如下所示：
+
+```csharp
+    void Awake() {
+        loader = new LuaLoader();
+        lua = new LuaState();
+        this.OpenLibs();
+        lua.LuaSetTop(0);
+
+        LuaBinder.Bind(lua);
+        DelegateFactory.Init();
+        LuaCoroutine.Register(lua, this);
+    }
+
+    public void InitStart() {
+        InitLuaPath();
+        InitLuaBundle();
+        this.lua.Start();    //启动LUAVM
+        this.StartMain();
+        this.StartLooper();
+    }
+```
