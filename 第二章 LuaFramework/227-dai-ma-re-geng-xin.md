@@ -115,5 +115,20 @@
 
 **网络资源地址**：存放游戏资源的网址，游戏开启后，程序会从网络资源地址下载一些更新的文件到数据目录。
 
+这些目录包含着不同版本的资源文件，以及用于版本控制的files.txt。Files.txt的内容如下图所示，里面存放着资源文件的名称和md5码。程序会先下载“网络资源地址”上的files.txt，然后与“数据目录”中文件的md5码做比较，更新有变化的文件（步骤2）。
 
-
+```csharp
+    StreamingAssets|1738a512698f18f78bfca1591edcf5ae
+    StreamingAssets.manifest|1994f53ee73e2badeddd65601d587f38
+    message.unity3d|1ab91c2ccd6a03232c0255c1895c6435
+    message.unity3d.manifest|9f46935cf1de80e8fab9927c6a25803f
+    prompt.unity3d|01b68a164fa653bf853bedbda3a5f3d0
+    prompt.unity3d.manifest|9ebfa552ca1e8a84360944c0dee65bb3
+    prompt_asset.unity3d|1655812ce2260a4747a7fdb8e39fc007
+    prompt_asset.unity3d.manifest|ed9d66a485b1d96d504f7002c52ef9a4
+    shared_asset.unity3d|17ce04b42949f651895d634f852dd972
+    shared_asset.unity3d.manifest|71721e8dbf69055affcf2a2e0b551f01
+    tank.unity3d|a5f10487d490d13642d40fce937c195c
+    tank.unity3d.manifest|202261f1e418ab2bbb8384ed6f54f958
+    lua/Build.bat|4cfc2f258ecdb9bb43756a2e737c7a1d
+```
