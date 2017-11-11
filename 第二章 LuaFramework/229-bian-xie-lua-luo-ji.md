@@ -258,3 +258,5 @@ tolua实现了LuaInterface，抛开luaFramework，只需创建lua虚拟机，便
         loop.luaState = lua;
     }
 ```
+
+🔚
