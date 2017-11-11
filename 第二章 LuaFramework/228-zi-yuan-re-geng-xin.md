@@ -61,14 +61,14 @@ LuaFramework在打包方面并没有做太多的工作，我们需要手动打�
 ```lua
     --主入口函数。从这里开始lua逻辑
     function Main()                                 
-            LuaHelper = LuaFramework.LuaHelper;
-            resMgr = LuaHelper.GetResManager();
-            resMgr:LoadPrefab('tank', { 'TankPrefab' }, OnLoadFinish);
+        LuaHelper = LuaFramework.LuaHelper;
+        resMgr = LuaHelper.GetResManager();
+        resMgr:LoadPrefab('tank', { 'TankPrefab' }, OnLoadFinish);
     end
     
     --加载完成后的回调--
     function OnLoadFinish(objs)
-            local go = UnityEngine.GameObject.Instantiate(objs[0]);
-            LuaFramework.Util.Log("Finish");        
+        local go = UnityEngine.GameObject.Instantiate(objs[0]);
+        LuaFramework.Util.Log("Finish");        
     end
 ```
