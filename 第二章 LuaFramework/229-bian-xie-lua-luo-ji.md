@@ -252,4 +252,9 @@ tolua实现了LuaInterface，抛开luaFramework，只需创建lua虚拟机，便
         main.Dispose();
         main = null;    
     }
+    
+    void StartLooper() {
+        loop = gameObject.AddComponent<LuaLooper>();
+        loop.luaState = lua;
+    }
 ```
