@@ -13,3 +13,12 @@
         public const bool LuaByteMode = false;                       //Lua字节码模式-默认关闭 
         public const bool LuaBundleMode = false;  ✅                  //Lua代码AssetBundle模式
 ```
+
+先测试个简单的创建物体，新建一个名为go的物体，然后设置它的坐标为(1,1,1)。这段代码虽然不涉及资源加载，但能展示“把物体添加到场景中”的过程。Main.lua的代码如下：
+
+```lua
+    function Main()                                    
+        local go = UnityEngine.GameObject ('go')
+        go.transform.position = Vector3.one             
+    end
+```
