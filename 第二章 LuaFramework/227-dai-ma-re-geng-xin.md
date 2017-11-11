@@ -58,5 +58,20 @@
         _GT(typeof(ResourceManager)),
 ```
 
+再由具体的类可以查找所有的API（参见下面两个图），如下图是Util类的部分语句。
+
+```csharp
+        public static void Log(string str) {
+            Debug.Log(str);
+        }
+
+        public static void LogWarning(string str) {
+            Debug.LogWarning(str);
+        }
+
+        public static void LogError(string str) {
+            Debug.LogError(str);
+        }
+```
 
 
