@@ -101,7 +101,7 @@ pc用户：
 
 ####3.2、Android 与iOS 热更新的异同
 
-• 苹果官方禁止iOS下的程序热更新；JIT在iOS下无效。
+• 苹果官方禁止iOS下的程序热更新；JIT（Just In Time即时编译技术）在iOS下无效。
 
 • 热更新方案：Unity+Lua插件。
 
