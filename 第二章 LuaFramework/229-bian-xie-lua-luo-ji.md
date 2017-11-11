@@ -10,7 +10,7 @@
 
 第一篇“代码热更新”演示了用lua打印HelloWorld的方法，第二篇“资源热更新”演示了加载坦克模型的方法。这一篇要把两者结合起来，用lua实现“用键盘控制坦克移动”的功能。用Lua和用c#编写的Unity3D程序大同小异，只需正确使用API即可。
 
-1）、Update 方法
+**1）、Update 方法**
 
 出于效率的考虑，tolua提供了名为UpdateBeat的对象，在LuaFramework中，只需给UpdateBeat添加回调函数，该函数便会每帧执行，相当于Monobehaviour的Update方法。Lua代码如下所示：
 
@@ -28,7 +28,7 @@
 
 &emsp;
 
-2）、控制坦克
+**2）、控制坦克**
 
 现在编写“用键盘控制坦克移动”的lua代码，加载坦克模型后，使用UpdateBeat注册每帧执行的Update方法，然后在Update方法中调用UnityEngine.Input等API实现功能。代码如下：
 
@@ -71,3 +71,6 @@
 
 ####二、自定义API
 
+框架中提供了数十个可供lua调用的c#类，但这些往往不够用，需要自己添加，本节将介绍添加自定义API的方法。
+
+1）、
