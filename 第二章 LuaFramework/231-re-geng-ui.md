@@ -32,3 +32,50 @@
         go.transform.localPosition = Vector3.zero;
     end
 ```
+
+运行游戏，即可看到加载出来的界面。
+
+&emsp;
+
+####二、事件响应
+
+c#中可以使用事件监听的方法给UI组件添加事件。例如，添加按钮点击事件的方法如下：
+
+```csharp
+    Button btn = go.GetComponent ();
+    btn.onClick.AddListener(()=>{this.OnClick(go);});
+```
+
+然而在LuaFramework的API中，没能找到合适的方法，只能根据第三篇中“自定义API”的方法，自己编写一套了。编写UIEvent类，它包含用于添加监听事件的AdonClick和清除监听事件的ClearButtonClick方法，代码如下所示（完成后记得要“修改CustomSetting”和“生成wrap文件”）。
+
+```csharp
+    using UnityEngine;
+    using System.Collections;
+    using LuaInterface;
+    using UnityEngine.UI;
+
+    public class UIEvent 
+    {
+
+        //添加监听
+        public static void AdonClick(GameObject go, LuaFunction luafunc) 
+        {
+            if (go == null || luafunc == null) return;
+
+            Button btn = go.GetComponent ();
+            if (btn == null) return;
+
+            btn.onClick.AddListener(()=>{luafunc.Call(go);});
+        }
+
+        //清除监听
+        public static void ClearButtonClick(GameObject go) 
+        {
+            if (go == null) return;
+            
+            Button btn = go.GetComponent ();
+            if (btn == null) return;
+            btn.onClick.RemoveAllListeners();
+        }
+    }
+```
