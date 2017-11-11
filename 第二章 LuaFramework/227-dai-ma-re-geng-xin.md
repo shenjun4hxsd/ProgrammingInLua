@@ -92,7 +92,7 @@
 ![](/assets/屏幕快照 2017-11-11 下午1.44.14.png)
 
 
-**游戏包资源目录**：里面包含Unity3D工程中StreamingAssets文件夹下的文件。安装游戏之后，这些文件将会被一字不差地复制到目标机器上的特定文件夹里，不同平台的文件夹不同，如下所示（上图以windows平台为例）
+**游戏资源目录**：里面包含Unity3D工程中StreamingAssets文件夹下的文件。安装游戏之后，这些文件将会被一字不差地复制到目标机器上的特定文件夹里，不同平台的文件夹不同，如下所示（上图以windows平台为例）
 
 ```csharp
     Mac OS或Windows：Application.dataPath + "/StreamingAssets";
