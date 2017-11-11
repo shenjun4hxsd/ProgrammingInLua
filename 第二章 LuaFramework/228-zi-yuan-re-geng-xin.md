@@ -111,11 +111,11 @@ LuaFramework在打包方面并没有做太多的工作，我们需要手动打�
     }
     
     /// <summary>
-        /// 载入AssetBundle
-        /// </summary>
-        /// <param name="abname"></param>
-        /// <returns></returns>
-        public AssetBundle LoadAssetBundle(string abname) {
+    /// 载入AssetBundle
+    /// </summary>
+    /// <param name="abname"></param>
+    /// <returns></returns>
+    public AssetBundle LoadAssetBundle(string abname) {
             if (!abname.EndsWith(AppConst.ExtName)) {
                 abname += AppConst.ExtName;
             }
@@ -133,13 +133,13 @@ LuaFramework在打包方面并没有做太多的工作，我们需要手动打�
                 bundles.TryGetValue(abname, out bundle);
             }
             return bundle;
-        }
+    }
 
-        /// <summary>
-        /// 载入依赖
-        /// </summary>
-        /// <param name="name"></param>
-        void LoadDependencies(string name) {
+    /// <summary>
+    /// 载入依赖
+    /// </summary>
+    /// <param name="name"></param>
+    void LoadDependencies(string name) {
             if (manifest == null) {
                 Debug.LogError("Please initialize AssetBundleManifest by calling AssetBundleManager.Initialize()");
                 return;
