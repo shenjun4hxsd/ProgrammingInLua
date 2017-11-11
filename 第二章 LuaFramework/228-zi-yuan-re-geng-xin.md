@@ -177,3 +177,9 @@ LuaFramework在打包方面并没有做太多的工作，我们需要手动打�
     }
 ```
 
+加载这个包后，便可以使用下面的语句获取某个包所依赖的所有包名，然后加载它们。
+
+```csharp
+    string[] dependencies = manifest.GetAllDependencies(name);
+```
+
