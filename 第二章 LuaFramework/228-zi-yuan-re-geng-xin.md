@@ -22,3 +22,11 @@
         go.transform.position = Vector3.one             
     end
 ```
+
+要热更新资源，便需要制作资源。这里制作一个名为tankPrefab的坦克模型预设，然后存到Assets/Tank目录下。接下来对它做打包，然后动态加载。
+
+####二、资源打包
+
+LuaFramework在打包方面并没有做太多的工作，我们需要手动打包。打开Assets/LuaFramework/Editor/Packager.cs，按照示例的写法，加上下面这一行：将Assets/Tank目录下的所有预设（.prefab）打包成名为tank的包。
+
+
