@@ -172,3 +172,38 @@ Get方法使用GetComponents获取游戏对象上的所有LuaComponent（一个�
         tankCmp2.name = "Tank2"
     end
 ```
+
+运行游戏，即可看到lua组件的运行结果。
+
+&emsp;
+
+####四、坦克组件
+
+下面代码演示用lua组件实现“用键盘控制坦克移动”的功能，TankCmp.lua的代码如下：
+
+```lua
+    TankCmp =
+    {
+        name = "good tank",
+    }
+
+    function TankCmp:Update(gameObject)
+        print("TankCmp Update name = "..self.name );
+        local Input = UnityEngine.Input;
+        local horizontal = Input.GetAxis("Horizontal");
+        local vertical = Input.GetAxis("Vertical");
+        local x = gameObject.transform.position.x + horizontal
+        local z = gameObject.transform.position.z + verticla
+        gameObject.transform.position = Vector3.New(x,0,z)
+    end
+
+ 
+
+    --创建对象
+    function TankCmp:New(obj)
+        local o = {}
+        setmetatable(o, self)  
+        self.__index = self  
+        return o
+    end  
+```
