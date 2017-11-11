@@ -43,7 +43,7 @@ LuaFramework在打包方面并没有做太多的工作，我们需要手动打�
         AddBuildMap("prompt_asset" + AppConst.ExtName, "*.png", "Assets/LuaFramework/Examples/Textures/Prompt");
         AddBuildMap("shared_asset" + AppConst.ExtName, "*.png", "Assets/LuaFramework/Examples/Textures/Shared");
 
-        // 坦克的
+        // 坦克的 ✅
         AddBuildMap("tank" + AppConst.ExtName, "*.prefab", "Assets/Tank");
     }
 ```
