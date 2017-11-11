@@ -1,8 +1,14 @@
 ##代码热更新
 
+&emsp;
+
+
 ####一、新建场景
 
 在任意物体上添加Main组件。其实Main组件里面只是调用了`AppFacade.Instance.StartUp()`，这是框架的起点。框架将会自动完成资源加载、热更新等等事项。
+
+&emsp;
+
 
 ####二、删掉事例的调用
 
@@ -20,6 +26,9 @@
         initialize = true;
     }
 ```
+
+&emsp;
+
 
 ####三、编写lua代码
 
@@ -74,6 +83,9 @@
         }
 ```
 
+&emsp;
+
+
 ####四、运行游戏
 
 点击菜单栏中LuaFramework→Build Windows Resource，生成资源文件。然后运行游戏，即可在控制台中看到打印出的HelloWorld。
@@ -85,11 +97,17 @@
     public const bool LuaBundleMode = false;
 ```
 
+&emsp;
+
+
 ####五、热更新原理
 
 接下来便要尝试代码热更新，让程序下载服务器上的lua文件，然后运行它。在说明热更新之前，需要先看看Unity3D热更新的一般方法。如下图所示，Unity3D的热更新会涉及3个目录。
 
 ![](/assets/屏幕快照 2017-11-11 下午1.44.14.png)
+
+&emsp;
+
 
 
 **游戏资源目录**：里面包含Unity3D工程中StreamingAssets文件夹下的文件。安装游戏之后，这些文件将会被一字不差地复制到目标机器上的特定文件夹里，不同平台的文件夹不同，如下所示（上图以windows平台为例）
@@ -136,11 +154,14 @@
 
 LuaFramework的热更新代码定义在`Assets\LuaFramework\Scripts\Manager\GameManager.cs`，真正用到项目时可能还需少许改动。
 
+&emsp;
+
+
 ####六、开始热更新代码
 
 那么开始测试热更新代码的功能吧！热更上述实现的“HelloWorld”。
 
-1）、修改配置
+1）、**修改配置**
 
 框架的默认配置是从本地加载文件，需要打开AppConst.cs将UpdateMode设置为true（才会执行步骤2），将LuaBundleMode设置为true，将WebUrl设置成服务器地址。
 
@@ -185,7 +206,7 @@ LuaFramework的热更新代码定义在`Assets\LuaFramework\Scripts\Manager\Game
 ```
 
 
-2）、配置“网络资源”
+2）、**配置“网络资源”**
 
 > IIS（Internet Information Services）是一种Web（网页）服务组件，其中包括Web服务器、FTP服务器、NNTP服务器和SMTP服务器，分别用于网页浏览、文件传输、新闻服务和邮件发送等方面，它使得在网络（包括互联网和局域网）上发布信息成了一件很容易的事。
 
@@ -193,9 +214,11 @@ LuaFramework的热更新代码定义在`Assets\LuaFramework\Scripts\Manager\Game
 
 > 打开IIS，win + R > inetMgr
 
-创建ASP.NET项目 MyHotUpdateWebTest
+&emsp;
 
-添加index.html
+#####创建ASP.NET项目 MyHotUpdateWebTest
+
+#####添加index.html
 
 ```csharp
     // index.html
@@ -212,7 +235,7 @@ LuaFramework的热更新代码定义在`Assets\LuaFramework\Scripts\Manager\Game
     </html>
 ```
 
-添加一般处理程序
+#####添加一般处理程序
 
 ```csharp
     using System;
@@ -254,7 +277,7 @@ LuaFramework的热更新代码定义在`Assets\LuaFramework\Scripts\Manager\Game
     }
 ```
 
-配置Web.config
+#####配置Web.config
 
 ```csharp
     <?xml version="1.0" encoding="utf-8"?>
@@ -277,7 +300,7 @@ LuaFramework的热更新代码定义在`Assets\LuaFramework\Scripts\Manager\Game
     </configuration>
 ```
 
-3）、测试热更新
+3）、**测试热更新**
 
 改一下Lua脚本（如将HelloWorld改为Hello Lpy2），点击Build Windows Resource，将“工程目录/StreamingAssets”里面的文件复制到服务器上。再将脚本改成其他内容，然后Build Windows Resource，覆盖掉本地资源。运行游戏，如果程序显示“Hello Lpy2”的代码，证明成功从网上拉取了文件。
 
