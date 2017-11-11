@@ -152,3 +152,23 @@ Get方法使用GetComponents获取游戏对象上的所有LuaComponent（一个�
         return o
     end  
 ```
+
+编写Main.lua，给游戏对象添加lua组件。
+
+```lua
+    require "TankCmp"
+
+    --主入口函数。从这里开始lua逻辑
+    function Main()
+        --组件1
+        local go = UnityEngine.GameObject ('go')
+        local tankCmp1 = LuaComponent.Add(go,TankCmp)
+        tankCmp1.name = "Tank1"
+
+        --组件2
+        local go2 = UnityEngine.GameObject ('go2')
+        LuaComponent.Add(go2,TankCmp)
+        local tankCmp2 = LuaComponent.Get(go2,TankCmp)
+        tankCmp2.name = "Tank2"
+    end
+```
