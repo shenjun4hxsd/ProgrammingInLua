@@ -9,7 +9,7 @@
 为了调试的方便，先将框架配置为本地模式，待测试热更新时再改成更新模式。
 
 ```csharp
-        public const bool UpdateMode = false;                       //更新模式-默认关闭 
+        public const bool UpdateMode = false;  ✅                     //更新模式-默认关闭 
         public const bool LuaByteMode = false;                       //Lua字节码模式-默认关闭 
-        public const bool LuaBundleMode = false;                    //Lua代码AssetBundle模式
+        public const bool LuaBundleMode = false;  ✅                  //Lua代码AssetBundle模式
 ```
