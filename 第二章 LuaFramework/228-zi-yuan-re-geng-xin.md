@@ -92,22 +92,22 @@ LuaFramework在打包方面并没有做太多的工作，我们需要手动打�
 
 ```csharp
      public void LoadPrefab(string abName, string[] assetNames, LuaFunction func) {
-            abName = abName.ToLower();
-            List<UObject> result = new List<UObject>();
-            for (int i = 0; i < assetNames.Length; i++) {
-                UObject go = LoadAsset<UObject>(abName, assetNames[i]);
-                if (go != null) result.Add(go);
-            }
-            if (func != null) func.Call((object)result.ToArray());
+        abName = abName.ToLower();
+        List<UObject> result = new List<UObject>();
+        for (int i = 0; i < assetNames.Length; i++) {
+            UObject go = LoadAsset<UObject>(abName, assetNames[i]);
+            if (go != null) result.Add(go);
+        }
+        if (func != null) func.Call((object)result.ToArray());
     }
     
     /// <summary>
     /// 载入素材
     /// </summary>
     public T LoadAsset<T>(string abname, string assetname) where T : UnityEngine.Object {
-            abname = abname.ToLower();
-            AssetBundle bundle = LoadAssetBundle(abname);
-            return bundle.LoadAsset<T>(assetname);
+        abname = abname.ToLower();
+        AssetBundle bundle = LoadAssetBundle(abname);
+        return bundle.LoadAsset<T>(assetname);
     }
     
     /// <summary>
@@ -116,23 +116,23 @@ LuaFramework在打包方面并没有做太多的工作，我们需要手动打�
     /// <param name="abname"></param>
     /// <returns></returns>
     public AssetBundle LoadAssetBundle(string abname) {
-            if (!abname.EndsWith(AppConst.ExtName)) {
-                abname += AppConst.ExtName;
-            }
-            AssetBundle bundle = null;
-            if (!bundles.ContainsKey(abname)) {
-                byte[] stream = null;
-                string uri = Util.DataPath + abname;
-                Debug.LogWarning("LoadFile::>> " + uri);
-                LoadDependencies(abname);
+        if (!abname.EndsWith(AppConst.ExtName)) {
+            abname += AppConst.ExtName;
+        }
+        AssetBundle bundle = null;
+        if (!bundles.ContainsKey(abname)) {
+            byte[] stream = null;
+            string uri = Util.DataPath + abname;
+            Debug.LogWarning("LoadFile::>> " + uri);
+            LoadDependencies(abname);
 
-                stream = File.ReadAllBytes(uri);
-                bundle = AssetBundle.LoadFromMemory(stream); //关联数据的素材绑定
-                bundles.Add(abname, bundle);
-            } else {
-                bundles.TryGetValue(abname, out bundle);
-            }
-            return bundle;
+            stream = File.ReadAllBytes(uri);
+            bundle = AssetBundle.LoadFromMemory(stream); //关联数据的素材绑定
+            bundles.Add(abname, bundle);
+        } else {
+            bundles.TryGetValue(abname, out bundle);
+        }
+        return bundle;
     }
 
     /// <summary>
@@ -140,21 +140,21 @@ LuaFramework在打包方面并没有做太多的工作，我们需要手动打�
     /// </summary>
     /// <param name="name"></param>
     void LoadDependencies(string name) {
-            if (manifest == null) {
-                Debug.LogError("Please initialize AssetBundleManifest by calling AssetBundleManager.Initialize()");
-                return;
-            }
-            // Get dependecies from the AssetBundleManifest object..
-            string[] dependencies = manifest.GetAllDependencies(name);
-            if (dependencies.Length == 0) return;
+        if (manifest == null) {
+            Debug.LogError("Please initialize AssetBundleManifest by calling AssetBundleManager.Initialize()");
+            return;
+        }
+        // Get dependecies from the AssetBundleManifest object..
+        string[] dependencies = manifest.GetAllDependencies(name);
+        if (dependencies.Length == 0) return;
 
-            for (int i = 0; i < dependencies.Length; i++)
-                dependencies[i] = RemapVariantName(dependencies[i]);
+        for (int i = 0; i < dependencies.Length; i++)
+            dependencies[i] = RemapVariantName(dependencies[i]);
 
-            // Record and load all dependencies.
-            for (int i = 0; i < dependencies.Length; i++) {
-                LoadAssetBundle(dependencies[i]);
-            }
+        // Record and load all dependencies.
+        for (int i = 0; i < dependencies.Length; i++) {
+            LoadAssetBundle(dependencies[i]);
+        }
     }
 ```
 
