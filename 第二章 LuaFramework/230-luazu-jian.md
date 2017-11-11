@@ -113,3 +113,5 @@
 LuaComponent主要有Get和Add两个静态方法，其中Get相当于UnityEngine中的GetComponent方法，Add相当于AddComponent方法，只不过这里添加的是lua组件不是c#组件。每个LuaComponent拥有一个LuaTable（lua表）类型的变量table，它既引用上述的Component表。
 
 Add方法使用AddComponent添加LuaComponent，调用参数中lua表的New方法，将其返回的表赋予table。
+
+Get方法使用GetComponents获取游戏对象上的所有LuaComponent（一个游戏对象可能包含多个lua组件，由参数table决定需要获取哪一个），通过元表地址找到对应的LuaComponent，返回lua表。
