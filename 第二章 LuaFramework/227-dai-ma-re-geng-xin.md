@@ -181,6 +181,9 @@ LuaFramework的热更新代码定义在`Assets\LuaFramework\Scripts\Manager\Game
                     return Application.dataPath + "/" + AppName;
                 }
             }
-        }
     }
 ```
+
+
+2）、配置“网络资源”
+
