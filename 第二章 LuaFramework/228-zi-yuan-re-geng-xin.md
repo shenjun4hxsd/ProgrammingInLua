@@ -30,7 +30,7 @@
 LuaFramework在打包方面并没有做太多的工作，我们需要手动打包。打开Assets/LuaFramework/Editor/Packager.cs，按照示例的写法，加上下面这一行：将Assets/Tank目录下的所有预设（.prefab）打包成名为tank的包。
 
 ```csharp
-/// <summary>
+    /// <summary>
     /// 处理框架实例包
     /// </summary>
     static void HandleExampleBundle() {
