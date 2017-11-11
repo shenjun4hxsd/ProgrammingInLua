@@ -29,4 +29,21 @@
 
 LuaFramework在打包方面并没有做太多的工作，我们需要手动打包。打开Assets/LuaFramework/Editor/Packager.cs，按照示例的写法，加上下面这一行：将Assets/Tank目录下的所有预设（.prefab）打包成名为tank的包。
 
+```csharp
+/// <summary>
+    /// 处理框架实例包
+    /// </summary>
+    static void HandleExampleBundle() {
+        string resPath = AppDataPath + "/" + AppConst.AssetDir + "/";
+        if (!Directory.Exists(resPath)) Directory.CreateDirectory(resPath);
 
+        AddBuildMap("prompt" + AppConst.ExtName, "*.prefab", "Assets/LuaFramework/Examples/Builds/Prompt");
+        AddBuildMap("message" + AppConst.ExtName, "*.prefab", "Assets/LuaFramework/Examples/Builds/Message");
+
+        AddBuildMap("prompt_asset" + AppConst.ExtName, "*.png", "Assets/LuaFramework/Examples/Textures/Prompt");
+        AddBuildMap("shared_asset" + AppConst.ExtName, "*.png", "Assets/LuaFramework/Examples/Textures/Shared");
+
+        // 坦克的
+        AddBuildMap("tank" + AppConst.ExtName, "*.prefab", "Assets/Tank");
+    }
+```
