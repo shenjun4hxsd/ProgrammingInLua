@@ -37,7 +37,26 @@
 
 “LuaFramework.Util.Log("HelloWorld")”中的Util是c#里定义的类，供lua中调用。可以打开Assets\LuaFramework\Editor\CustomSettings.cs看到所有可以供lua调用的类，如下图是CustomSettings.cs的部分语句。
 
+```csharp
+        //for LuaFramework
+        _GT(typeof(RectTransform)),
+        _GT(typeof(Text)),
 
+        _GT(typeof(Util)),
+        _GT(typeof(AppConst)),
+        _GT(typeof(LuaHelper)),
+        _GT(typeof(ByteBuffer)),
+        _GT(typeof(LuaBehaviour)),
+
+        _GT(typeof(GameManager)),
+        _GT(typeof(LuaManager)),
+        _GT(typeof(PanelManager)),
+        _GT(typeof(SoundManager)),
+        _GT(typeof(TimerManager)),
+        _GT(typeof(ThreadManager)),
+        _GT(typeof(NetworkManager)),
+        _GT(typeof(ResourceManager)),
+```
 
 
 
