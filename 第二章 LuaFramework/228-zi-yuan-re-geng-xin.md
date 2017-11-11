@@ -70,7 +70,5 @@ LuaFramework在打包方面并没有做太多的工作，我们需要手动打�
     function OnLoadFinish(objs)
             local go = UnityEngine.GameObject.Instantiate(objs[0]);
             LuaFramework.Util.Log("Finish");        
-    
-    
     end
 ```
