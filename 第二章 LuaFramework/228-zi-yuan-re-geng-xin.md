@@ -47,3 +47,9 @@ LuaFramework在打包方面并没有做太多的工作，我们需要手动打�
         AddBuildMap("tank" + AppConst.ExtName, "*.prefab", "Assets/Tank");
     }
 ```
+
+点击“Build Windows Resource”，即可在StreamingAssets中看到打包好的文件。
+
+
+
+
