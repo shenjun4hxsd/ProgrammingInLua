@@ -90,7 +90,7 @@ c#中可以使用事件监听的方法给UI组件添加事件。例如，添加�
         --显示面板
         略
         --事件处理
-        local btn = go.transform:FindChild("Button").gameObject
+        local btn = go.transform:Find("Button").gameObject
         UIEvent.AdonClick(btn, OnClick)
     end
 
@@ -100,3 +100,11 @@ c#中可以使用事件监听的方法给UI组件添加事件。例如，添加�
 
     end
 ```
+
+运行游戏，点击按钮，OnClick方法即被调用。
+
+&emsp;
+
+####三、界面管理器
+
+LuaFramework提供了一套简单的（不完善的）界面管理器，具体代码请参见PanelManager类。PanelManager类的CreatePanel方法完成异步加载资源，在加载完成后，会设置面板的大小和位置，然后调用回调函数。与上面用lua加载界面的方法完全一样。
