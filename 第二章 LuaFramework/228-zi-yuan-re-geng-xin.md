@@ -161,19 +161,19 @@ LuaFramework在打包方面并没有做太多的工作，我们需要手动打�
 打包后，Unity3D会产生一个名为AssetBundle.manifest的文件（框架会将该文件放在StreamingAssets中），该文件包含所有包的依赖信息。所以在加载资源前需要先加载这个文件，m_AssetBundleManifest便是指向这个包的变量。相关代码如下：
 
 ```csharp
-/// <summary>
-        /// 初始化
-        /// </summary>
-        public void Initialize() {
-            byte[] stream = null;
-            string uri = string.Empty;
-            bundles = new Dictionary<string, AssetBundle>();
-            uri = Util.DataPath + AppConst.AssetDir;
-            Debug.Log("uri : " + uri);
-            if (!File.Exists(uri)) return;
-            stream = File.ReadAllBytes(uri);
-            assetbundle = AssetBundle.LoadFromMemory(stream);
-            manifest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
+    /// <summary>
+    /// 初始化
+    /// </summary>
+    public void Initialize() {
+        byte[] stream = null;
+        string uri = string.Empty;
+        bundles = new Dictionary<string, AssetBundle>();
+        uri = Util.DataPath + AppConst.AssetDir;
+        Debug.Log("uri : " + uri);
+        if (!File.Exists(uri)) return;
+        stream = File.ReadAllBytes(uri);
+        assetbundle = AssetBundle.LoadFromMemory(stream);
+        manifest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         }
 ```
 
