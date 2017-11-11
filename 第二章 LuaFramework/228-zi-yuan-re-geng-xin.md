@@ -81,3 +81,8 @@ LuaFramework在打包方面并没有做太多的工作，我们需要手动打�
         LuaFramework.Util.Log("Finish");        
     end
 ```
+
+完成后运行游戏，即可看到动态加载出来的模型。
+
+&emsp;
+
