@@ -231,3 +231,8 @@ LuaFramework会给每个界面添加名为LuaBehaviour的组件，它拥有用�
         }
     }
 ```
+
+在LuaFramework的PureMVC架构中，如果要添加一个界面，需要编写对应的Controller、View，以及修改3个框架自带的lua文件，比较繁琐。因此在实际项目中有必要重写PanelManager，由它实现界面的加载及事件处理。
+
+
+🔚
