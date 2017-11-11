@@ -174,6 +174,6 @@ LuaFramework在打包方面并没有做太多的工作，我们需要手动打�
         stream = File.ReadAllBytes(uri);
         assetbundle = AssetBundle.LoadFromMemory(stream);
         manifest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
-        }
+    }
 ```
 
