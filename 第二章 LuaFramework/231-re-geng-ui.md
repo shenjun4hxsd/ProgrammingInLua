@@ -61,7 +61,7 @@ c#中可以使用事件监听的方法给UI组件添加事件。例如，添加�
         public static void AdonClick(GameObject go, LuaFunction luafunc) 
         {
             if (go == null || luafunc == null) return;
-            Button btn = go.GetComponent ();
+            Button btn = go.GetComponent<Button> ();
             if (btn == null) return;
             btn.onClick.AddListener(()=>{luafunc.Call(go);});
         }
