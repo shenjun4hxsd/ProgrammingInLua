@@ -9,6 +9,7 @@
 
 4、CS.UnityEngine.Debug.Log('hello world')是通过Lua调用C#中的Debug.Log方法。
 
+5、销毁luaenv对象 luaenv.Dispose()
 
 ```csharp
     using UnityEngine;
