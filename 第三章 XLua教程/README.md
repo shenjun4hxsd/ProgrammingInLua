@@ -181,12 +181,18 @@
 ####访问C#成员属性，方法
 
 读成员属性
-testobj.DMF
+```csharp
+    testobj.DMF
+```
 写成员属性
-testobj.DMF = 1024
+```csharp
+    testobj.DMF = 1024
+```
 调用成员方法
 注意：调用成员方法，第一个参数需要传该对象，建议用冒号语法糖，如下
-testobj:DMFunc()
+```csharp
+    testobj:DMFunc()
+```
 父类属性，方法
 xlua支持（通过派生类）访问基类的静态属性，静态方法，（通过派生类实例）访问基类的成员属性，成员方法
 参数的输入输出属性（out，ref）
