@@ -1,6 +1,13 @@
-##xLua教程
+#xLua教程
+
+&emsp;
+
 
 ###Lua文件加载
+
+&emsp;
+
+
 
 ####一、执行字符串
 
@@ -38,6 +45,9 @@
 通过`AddLoader`可以注册个回调，该回调参数是字符串，`lua`代码里头调用`require`时，参数将会透传给回调，回调中就可以根据这个参数去加载指定文件，如果需要支持调试，需要把`filepath`修改为真实路径传出。该回调返回值是一个`byte`数组，如果为空表示该`loader`找不到，否则则为`lua`文件的内容。
 有了这个就简单了，用IIPS的IFS？没问题。写个`loader`调用IIPS的接口读文件内容即可。文件已经加密？没问题，自己写`loader`读取文件解密后返回即可。。。
 完整示例见`XLua\Tutorial\LoadLuaScript\Loader`
+
+&emsp;
+
 
 ###C#访问Lua
 
