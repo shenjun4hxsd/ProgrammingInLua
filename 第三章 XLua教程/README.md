@@ -323,15 +323,20 @@ Lua53版本64位整数（`long`，`ulong`）映射到原生的64位整数，而`
     void Foo(B b)
 ```
 
-在lua可以这么调用
+在`lua`可以这么调用
 
 ```csharp
     obj:Foo({b = {a = 100}, c = 200})
 ```
 
-获取类型（相当于C#的typeof）
-比如要获取UnityEngine.ParticleSystem类的Type信息，可以这样
-typeof(CS.UnityEngine.ParticleSystem)
+####获取类型（相当于C#的typeof）
+
+比如要获取`UnityEngine.ParticleSystem`类的`Type`信息，可以这样
+
+```csharp
+    typeof(CS.UnityEngine.ParticleSystem)
+```
+
 “强”转
 lua没类型，所以不会有强类型语言的“强转”，但有个有点像的东西：告诉xlua要用指定的生成代码去调用一个对象，这在什么情况下能用到呢？有的时候第三方库对外暴露的是一个interface或者抽象类，实现类是隐藏的，这样我们无法对实现类进行代码生成。该实现类将会被xlua识别为未生成代码而用反射来访问，如果这个调用是很频繁的话还是很影响性能的，这时我们就可以把这个interface或者抽象类加到生成代码，然后指定用该生成代码来访问：
 cast(calc, typeof(CS.Tutorial.Calc))
