@@ -170,9 +170,14 @@
 ```csharp
     CS.UnityEngine.GameObject.Find('helloworld')
 ```
+
 小技巧：如果需要经常访问的类，可以先用局部变量引用后访问，除了减少敲代码的时间，还能提高性能：
-local GameObject = CS.UnityEngine.GameObject
-GameObject.Find('helloworld')
+
+```csharp
+    local GameObject = CS.UnityEngine.GameObject
+    GameObject.Find('helloworld')
+```
+
 访问C#成员属性，方法
 读成员属性
 testobj.DMF
