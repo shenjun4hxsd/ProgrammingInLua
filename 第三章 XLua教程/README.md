@@ -207,19 +207,31 @@ Lua调用测的返回值处理规则：`C#`函数的返回值（如果有的话�
 ####重载方法
 
 直接通过不同的参数类型进行重载函数的访问，例如：
+
 ```lua
     testobj:TestFunc(100)
     testobj:TestFunc('hello')
 ```
-将分别访问整数参数的TestFunc和字符串参数的TestFunc。
-注意：xlua只一定程度上支持重载函数的调用，因为lua的类型远远不如C#丰富，存在一对多的情况，比如C#的int，float，double都对应于lua的number，上面的例子中TestFunc如果有这些重载参数，第一行将无法区分开来，只能调用到其中一个（生成代码中排前面的那个）
-操作符
+
+将分别访问整数参数的`TestFunc`和字符串参数的`TestFunc`。
+
+注意：`xlua`只一定程度上支持重载函数的调用，因为`lua`的类型远远不如`C#`丰富，存在一对多的情况，比如`C#`的`int`，`float`，`double`都对应于`lua`的`number`，上面的例子中`TestFunc`如果有这些重载参数，第一行将无法区分开来，只能调用到其中一个（生成代码中排前面的那个）
+
+####操作符
+
 支持的操作符有：+，-，*，/，==，一元-，<，<=， %，[]
-参数带默认值的方法
-和C#调用有默认值参数的函数一样，如果所给的实参少于形参，则会用默认值补上。
-可变参数方法
+
+####参数带默认值的方法
+
+和`C#`调用有默认值参数的函数一样，如果所给的实参少于形参，则会用默认值补上。
+
+####可变参数方法
+
 对于C#的如下方法：
-void VariableParamsFunc(int a, params string[] strs)
+
+```csharp
+    void VariableParamsFunc(int a, params string[] strs)
+```
 可以在lua里头这样调用：
 testobj:VariableParamsFunc(5, 'hello', 'john')
 使用Extension methods
