@@ -3,21 +3,25 @@
 ###Lua文件加载
 
 ####一、执行字符串
-最基本是直接用LuaEnv.DoString执行一个字符串，当然，字符串得符合Lua语法
-比如：luaenv.DoString("print('hello world')")
+
+最基本是直接用`LuaEnv.DoString`执行一个字符串，当然，字符串得符合Lua语法
+比如：`luaenv.DoString("print('hello world')")`
 完整代码见XLua\Tutorial\LoadLuaScript\ByString目录
 但这种方式并不建议，更建议下面介绍这种方法。
 
 ####二、加载Lua文件
-用lua的require函数即可
-比如：DoString("require 'byfile'")
-完整代码见XLua\Tutorial\LoadLuaScript\ByFile目录
-require实际上是调一个个的loader去加载，有一个成功就不再往下尝试，全失败则报文件找不到。
-目前xLua除了原生的loader外，还添加了从Resource加载的loader，需要注意的是因为Resource只支持有限的后缀，放Resources下的lua文件得加上txt后缀（见附带的例子）。
-建议的加载Lua脚本方式是：整个程序就一个DoString("require 'main'")，然后在main.lua加载其它脚本（类似lua脚本的命令行执行：lua main.lua）。
-有童鞋会问：要是我的Lua文件是下载回来的，或者某个自定义的文件格式里头解压出来，或者需要解密等等，怎么办？问得好，xLua的自定义Loader可以满足这些需求。
+
+用lua的`require`函数即可
+比如：`DoString("require 'byfile'")`
+完整代码见`XLua\Tutorial\LoadLuaScript\ByFile`目录
+
+`require`实际上是调一个个的`loader`去加载，有一个成功就不再往下尝试，全失败则报文件找不到。
+目前xLua除了原生的`loader`外，还添加了从`Resource`加载的`loader`，需要注意的是因为`Resource`只支持有限的后缀，放`Resources`下的`lua`文件得加上`txt`后缀（见附带的例子）。
+建议的加载`Lua`脚本方式是：整个程序就一个`DoString("require 'main'")`，然后在`main.lua`加载其它脚本（类似`lua`脚本的命令行执行：`lua main.lua`）。
+有童鞋会问：要是我的`Lua`文件是下载回来的，或者某个自定义的文件格式里头解压出来，或者需要解密等等，怎么办？问得好，`xLua`的自定义`Loader`可以满足这些需求。
 
 ####三、自定义Loader
+
 在xLua加自定义loader是很简单的，只涉及到一个接口：
 
 ```csharp
