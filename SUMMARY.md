@@ -54,4 +54,5 @@
   * [2.31 热更UI](第二章 LuaFramework/231-re-geng-ui.md)
 * [第三章 XLua教程](第三章 XLua教程/README.md)
   * [3.1 HelloWorld](第三章 XLua教程/3_1 HelloWorld.md)
+  * [3.2 U3DScripting](第三章 XLua教程/3_2 U3DScripting.md)
 
