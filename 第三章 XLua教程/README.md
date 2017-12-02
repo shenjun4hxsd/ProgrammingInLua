@@ -241,12 +241,20 @@ Lua调用测的返回值处理规则：`C#`函数的返回值（如果有的话�
 
 ####使用Extension methods
 
-在C#里定义了，lua里就能直接使用。
-泛化（模版）方法
-不直接支持，可以通过Extension methods功能进行封装后调用。
-枚举类型
+在`C#`里定义了，`lua`里就能直接使用。
+
+####泛化（模版）方法
+
+不直接支持，可以通过`Extension methods`功能进行封装后调用。
+
+####枚举类型
+
 枚举值就像枚举类型下的静态属性一样。
-testobj:EnumTestFunc(CS.Tutorial.TestEnum.E1)
+
+```csharp
+    testobj:EnumTestFunc(CS.Tutorial.TestEnum.E1)
+```
+
 上面的EnumTestFunc函数参数是Tutorial.TestEnum类型的
 另外，如果枚举类加入到生成代码的话，枚举类将支持__CastFrom方法，可以实现从一个整数或者字符串到枚举值的转换，例如：
 CS.Tutorial.TestEnum.__CastFrom(1)
