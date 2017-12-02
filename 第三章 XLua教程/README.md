@@ -271,12 +271,25 @@ Lua调用测的返回值处理规则：`C#`函数的返回值（如果有的话�
 `-`操作符：和`+`相反，把一个`delegate`从调用链中移除。
 >Ps：`delegate`属性可以用一个`luafunction`来赋值。
 
-event
-比如testobj里头有个事件定义是这样：public event Action TestEvent;
+####event
+
+比如`testobj`里头有个事件定义是这样：
+
+```csharp
+    public event Action TestEvent;
+```
+
 增加事件回调
-testobj:TestEvent('+', lua_event_callback)
+```csharp
+    testobj:TestEvent('+', lua_event_callback)
+```
+
 移除事件回调
-testobj:TestEvent('-', lua_event_callback)
+
+```csharp
+    testobj:TestEvent('-', lua_event_callback)
+```
+
 64位整数支持
 Lua53版本64位整数（long，ulong）映射到原生的64未整数，而luaji版本t，相当于lua5.1的标准，本身不支持64位，xlua做了个64位支持的扩展库，C#的long和ulong都将映射到userdata：
 支持在lua里头进行64位的运算，比较，打印
