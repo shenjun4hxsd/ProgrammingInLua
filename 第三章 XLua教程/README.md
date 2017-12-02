@@ -227,7 +227,7 @@ Lua调用测的返回值处理规则：`C#`函数的返回值（如果有的话�
 
 ####可变参数方法
 
-对于C#的如下方法：
+对于`C#`的如下方法：
 
 ```csharp
     void VariableParamsFunc(int a, params string[] strs)
@@ -239,7 +239,8 @@ Lua调用测的返回值处理规则：`C#`函数的返回值（如果有的话�
     testobj:VariableParamsFunc(5, 'hello', 'john')
 ```
 
-使用Extension methods
+####使用Extension methods
+
 在C#里定义了，lua里就能直接使用。
 泛化（模版）方法
 不直接支持，可以通过Extension methods功能进行封装后调用。
