@@ -2,7 +2,10 @@
 
 ####ButtonInteraction.lua.txt
 
-通过LuaBehaviour执行此Lua脚本
+通过`LuaBehaviour`执行此`Lua`脚本，并通过Injections数组中添加一组`input`
+
+	Name:input
+	Value:InputField
 
 ```lua
 	function start()
