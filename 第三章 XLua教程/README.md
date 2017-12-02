@@ -148,17 +148,28 @@
 ```
 
 基本类似，除了：
-lua里头没有new关键字；
-所有C#相关的都放到CS下，包括构造函数，静态成员属性、方法；
-如果有多个构造函数呢？放心，xlua支持重载，比如你要调用GameObject的带一个string参数的构造函数，这么写：
-local newGameObj2 = CS.UnityEngine.GameObject('helloworld')
-访问C#静态属性，方法
+`lua`里头没有`new`关键字；
+所有`C#`相关的都放到`CS`下，包括构造函数，静态成员属性、方法；
+
+如果有多个构造函数呢？放心，`xlua`支持重载，比如你要调用`GameObject`的带一个`string`参数的构造函数，这么写：
+
+```csharp
+    local newGameObj2 = CS.UnityEngine.GameObject('helloworld')
+```
+
+####访问`C#`静态属性，方法
 读静态属性
-CS.UnityEngine.Time.deltaTime
+```csharp
+    CS.UnityEngine.Time.deltaTime
+```
 写静态属性
-CS.UnityEngine.Time.timeScale = 0.5
+```csharp
+    CS.UnityEngine.Time.timeScale = 0.5
+```
 调用静态方法
-CS.UnityEngine.GameObject.Find('helloworld')
+```csharp
+    CS.UnityEngine.GameObject.Find('helloworld')
+```
 小技巧：如果需要经常访问的类，可以先用局部变量引用后访问，除了减少敲代码的时间，还能提高性能：
 local GameObject = CS.UnityEngine.GameObject
 GameObject.Find('helloworld')
