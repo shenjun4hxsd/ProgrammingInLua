@@ -129,12 +129,24 @@
 
 ##Lua调用C#
 
-本章节涉及到的实例均在XLua\Tutorial\LuaCallCSharp下
-new C#对象
-你在C#这样new一个对象：
-var newGameObj = new UnityEngine.GameObject();
+&emsp;
+
+本章节涉及到的实例均在`XLua\Tutorial\LuaCallCSharp`下
+
+####new C#对象
+
+你在`C#`这样`new`一个对象：
+
+```csharp
+    var newGameObj = new UnityEngine.GameObject();
+```
+
 对应到Lua是这样：
-local newGameObj = CS.UnityEngine.GameObject()
+
+```csharp
+    local newGameObj = CS.UnityEngine.GameObject()
+```
+
 基本类似，除了：
 lua里头没有new关键字；
 所有C#相关的都放到CS下，包括构造函数，静态成员属性、方法；
