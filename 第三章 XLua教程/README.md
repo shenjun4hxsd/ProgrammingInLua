@@ -127,13 +127,13 @@
 &emsp;
 
 
-##Lua调用C#
+##Lua调用`C#`
 
 &emsp;
 
 本章节涉及到的实例均在`XLua\Tutorial\LuaCallCSharp`下
 
-####new C#对象
+####new `C#`对象
 
 你在`C#`这样`new`一个对象：
 
@@ -219,7 +219,7 @@ Lua调用测的返回值处理规则：`C#`函数的返回值（如果有的话�
 
 ####操作符
 
-支持的操作符有：+，-，*，/，==，一元-，<，<=， %，[]
+支持的操作符有：`+，-，*，/，==，一元-，<，<=， %，[]`
 
 ####参数带默认值的方法
 
@@ -255,10 +255,15 @@ Lua调用测的返回值处理规则：`C#`函数的返回值（如果有的话�
     testobj:EnumTestFunc(CS.Tutorial.TestEnum.E1)
 ```
 
-上面的EnumTestFunc函数参数是Tutorial.TestEnum类型的
-另外，如果枚举类加入到生成代码的话，枚举类将支持__CastFrom方法，可以实现从一个整数或者字符串到枚举值的转换，例如：
-CS.Tutorial.TestEnum.__CastFrom(1)
-CS.Tutorial.TestEnum.__CastFrom('E1')
+上面的`EnumTestFunc`函数参数是`Tutorial.TestEnum`类型的
+
+另外，如果枚举类加入到生成代码的话，枚举类将支持`__CastFrom`方法，可以实现从一个整数或者字符串到枚举值的转换，例如：
+
+```csharp
+    CS.Tutorial.TestEnum.__CastFrom(1)
+    CS.Tutorial.TestEnum.__CastFrom('E1')
+```
+
 delegate使用（调用，+，-）
 C#的delegate调用：和调用普通lua函数一样
 +操作符：对应C#的+操作符，把两个调用串成一个调用链，右操作数可以是同类型的C# delegate或者是lua函数。
