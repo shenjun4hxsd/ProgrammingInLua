@@ -118,12 +118,17 @@
 
 &emsp;
 
-####四、使用建议
+>####四、使用建议
 
-1、访问lua全局数据，特别是table以及function，代价比较大，建议尽量少做，比如在初始化时把要调用的lua function获取一次（映射到delegate）后，保存下来，后续直接调用该delegate即可。table也类似。
+>1、访问`lua`全局数据，特别是`table`以及`function`，代价比较大，建议尽量少做，比如在初始化时把要调用的`lua function`获取一次（映射到`delegate`）后，保存下来，后续直接调用该`delegate`即可。`table`也类似。
 
-2、如果lua测的实现的部分都以delegate和interface的方式提供，使用方可以完全和xLua解耦：由一个专门的模块负责xlua的初始化以及delegate、interface的映射，然后把这些delegate和interface设置到要用到它们的地方。
-Lua调用C#
+>2、如果`lua`测的实现的部分都以`delegate`和`interface`的方式提供，使用方可以完全和`xLua`解耦：由一个专门的模块负责`xlua`的初始化以及`delegate`、`interface`的映射，然后把这些`delegate`和`interface`设置到要用到它们的地方。
+
+&emsp;
+
+
+##Lua调用C#
+
 本章节涉及到的实例均在XLua\Tutorial\LuaCallCSharp下
 new C#对象
 你在C#这样new一个对象：
