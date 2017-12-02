@@ -290,28 +290,45 @@ Lua调用测的返回值处理规则：`C#`函数的返回值（如果有的话�
     testobj:TestEvent('-', lua_event_callback)
 ```
 
-64位整数支持
-Lua53版本64位整数（long，ulong）映射到原生的64未整数，而luaji版本t，相当于lua5.1的标准，本身不支持64位，xlua做了个64位支持的扩展库，C#的long和ulong都将映射到userdata：
-支持在lua里头进行64位的运算，比较，打印
-支持和lua number的运算，比较
-要注意的是，在64扩展库中，实际上只有int64，ulong也会先强转成long再传递到lua，而对ulong的一些运算，比较，我们采取和java一样的支持方式，提供一组API，详情请看API文档。
-C#复杂类型和table的自动转换
-对于一个有无参构造函数的C#复杂类型，在lua侧可以直接用一个table来代替，该table对应复杂类型的public字段有相应字段即可，支持函数参数传递，属性赋值等，例如：
-C#下B结构体（class也支持）定义如下：
-public struct A
-{
-    public int a;
-}
+####64位整数支持
 
-public struct B
-{
-    public A b;
-    public double c;
-}
+Lua53版本64位整数（`long`，`ulong`）映射到原生的64位整数，而`luajit`版本，相当于lua5.1的标准，本身不支持64位，`xlua`做了个64位支持的扩展库，`C#`的`long`和`ulong`都将映射到`userdata`：
+
+    支持在lua里头进行64位的运算，比较，打印
+    支持和lua number的运算，比较
+    
+要注意的是，在64扩展库中，实际上只有`int64`，`ulong`也会先强转成`long`再传递到`lua`，而对`ulong`的一些运算，比较，我们采取和`java`一样的支持方式，提供一组API，详情请看API文档。
+
+####C#复杂类型和table的自动转换
+
+对于一个有无参构造函数的`C#`复杂类型，在`lua`侧可以直接用一个`table`来代替，该`table`对应复杂类型的`public`字段有相应字段即可，支持函数参数传递，属性赋值等，例如：
+
+`C#`下B结构体（`class`也支持）定义如下：
+
+```csharp
+    public struct A
+    {
+        public int a;
+    }
+    
+    public struct B
+    {
+        public A b;
+        public double c;
+    }
+```
 某个类有成员函数如下：
-void Foo(B b)
+
+```csharp
+    void Foo(B b)
+```
+
 在lua可以这么调用
-obj:Foo({b = {a = 100}, c = 200})
+
+```csharp
+    obj:Foo({b = {a = 100}, c = 200})
+```
+
 获取类型（相当于C#的typeof）
 比如要获取UnityEngine.ParticleSystem类的Type信息，可以这样
 typeof(CS.UnityEngine.ParticleSystem)
