@@ -55,4 +55,5 @@
 * [第三章 XLua教程](第三章 XLua教程/README.md)
   * [3.1 HelloWorld](第三章 XLua教程/3_1 HelloWorld.md)
   * [3.2 U3DScripting](第三章 XLua教程/3_2 U3DScripting.md)
+  * [3.3 UIEvent](第三章 XLua教程/3_3 UIEvent.md)
 
