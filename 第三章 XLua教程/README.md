@@ -49,25 +49,26 @@
 ```
 
 ####二、访问一个全局的table
-也是用上面的Get方法，那类型要指定成啥呢？
+
+也是用上面的`Get`方法，那类型要指定成啥呢？
 
 **1、映射到普通class或struct**
 
-定义一个class，有对应于table的字段的public属性，而且有无参数构造函数即可，比如对于{f1 = 100, f2 = 100}可以定义一个包含public int f1;public int f2;的class。
-这种方式下xLua会帮你new一个实例，并把对应的字段赋值过去。
-table的属性可以多于或者少于class的属性。可以嵌套其它复杂类型。
-要注意的是，这个过程是值拷贝，如果class比较复杂代价会比较大。而且修改class的字段值不会同步到table，反过来也不会。
-这个功能可以通过把类型加到GCOptimize生成降低开销，详细可参见配置介绍文档。
+定义一个`class`，有对应于`table`的字段的`public`属性，而且有无参数构造函数即可，比如对于`{f1 = 100, f2 = 100}`可以定义一个包含`public int f1;public int f2;`的`class`。
+这种方式下`xLua`会帮你`new`一个实例，并把对应的字段赋值过去。
+`table`的属性可以多于或者少于`class`的属性。可以嵌套其它复杂类型。
+要注意的是，这个过程是值拷贝，如果`class`比较复杂代价会比较大。而且修改`class`的字段值不会同步到`table`，反过来也不会。
+这个功能可以通过把类型加到`GCOptimize`生成降低开销，详细可参见配置介绍文档。
 那有没有引用方式的映射呢？有，下面这个就是：
 
 **2、映射到一个interface**
 
-这种方式依赖于生成代码（如果没生成代码会抛InvalidCastException异常），代码生成器会生成这个interface的实例，如果get一个属性，生成代码会get对应的table字段，如果set属性也会设置对应的字段。甚至可以通过interface的方法访问lua的函数。
+这种方式依赖于生成代码（如果没生成代码会抛`InvalidCastException`异常），代码生成器会生成这个`interface`的实例，如果`get`一个属性，生成代码会`get`对应的`table`字段，如果`set`属性也会设置对应的字段。甚至可以通过`interface`的方法访问`lua`的函数。
 
-**3、更轻量级的by value方式**：映射到Dictionary<>，List<>
-不想定义class或者interface的话，可以考虑用这个，前提table下key和value的类型都是一致的。
+**3、更轻量级的by value方式**：映射到`Dictionary<>`，`List<>`
+不想定义`class`或者`interface`的话，可以考虑用这个，前提`table`下`key`和`value`的类型都是一致的。
 
-**4、另外一种by ref方式**：映射到LuaTable类
+**4、另外一种by ref方式**：映射到`LuaTable`类
 这种方式好处是不需要生成代码，但也有一些问题，比如慢，比方式2要慢一个数量级，比如没有类型检查。
 
 ####三、访问一个全局的function
