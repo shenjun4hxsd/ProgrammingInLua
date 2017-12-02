@@ -5,14 +5,20 @@
 ####一、执行字符串
 
 最基本是直接用`LuaEnv.DoString`执行一个字符串，当然，字符串得符合`Lua`语法
-比如：`luaenv.DoString("print('hello world')")`
+比如：
+```csharp
+    luaenv.DoString("print('hello world')")
+```
 完整代码见`XLua\Tutorial\LoadLuaScript\ByString`目录
 但这种方式并不建议，更建议下面介绍这种方法。
 
 ####二、加载Lua文件
 
 用lua的`require`函数即可
-比如：`DoString("require 'byfile'")`
+比如：
+```csharp
+    DoString("require 'byfile'")
+```
 完整代码见`XLua\Tutorial\LoadLuaScript\ByFile`目录
 
 `require`实际上是调一个个的`loader`去加载，有一个成功就不再往下尝试，全失败则报文件找不到。
@@ -38,6 +44,9 @@
 这里指的是`C#`主动发起对`Lua`数据结构的访问。
 本章涉及到的例子都可以在`XLua\Tutorial\CSharpCallLua`下找到。
 
+&emsp;
+
+
 ####一、获取一个全局基本数据类型
 
 访问`LuaEnv.Global`就可以了，上面有个模版`Get`方法，可指定返回的类型。
@@ -47,6 +56,9 @@
     luaenv.Global.Get<string>("b")
     luaenv.Global.Get<bool>("c")
 ```
+
+&emsp;
+
 
 ####二、访问一个全局的table
 
@@ -70,6 +82,8 @@
 
 **4、另外一种by ref方式**：映射到`LuaTable`类
 这种方式好处是不需要生成代码，但也有一些问题，比如慢，比方式2要慢一个数量级，比如没有类型检查。
+
+&emsp;
 
 ####三、访问一个全局的function
 
