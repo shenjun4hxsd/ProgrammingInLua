@@ -1,6 +1,6 @@
 ##UIEvent
 
-####ButtonInteration.lua.txt
+####ButtonInteraction.lua.txt
 
 ```lua
 	function start()
