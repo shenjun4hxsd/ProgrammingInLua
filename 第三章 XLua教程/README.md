@@ -178,7 +178,8 @@
     GameObject.Find('helloworld')
 ```
 
-访问C#成员属性，方法
+####访问C#成员属性，方法
+
 读成员属性
 testobj.DMF
 写成员属性
