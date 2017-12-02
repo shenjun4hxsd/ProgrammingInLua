@@ -4,9 +4,9 @@
 
 ####一、执行字符串
 
-最基本是直接用`LuaEnv.DoString`执行一个字符串，当然，字符串得符合Lua语法
+最基本是直接用`LuaEnv.DoString`执行一个字符串，当然，字符串得符合`Lua`语法
 比如：`luaenv.DoString("print('hello world')")`
-完整代码见XLua\Tutorial\LoadLuaScript\ByString目录
+完整代码见`XLua\Tutorial\LoadLuaScript\ByString`目录
 但这种方式并不建议，更建议下面介绍这种方法。
 
 ####二、加载Lua文件
@@ -22,27 +22,30 @@
 
 ####三、自定义Loader
 
-在xLua加自定义loader是很简单的，只涉及到一个接口：
+在`xLua`加自定义`loader`是很简单的，只涉及到一个接口：
 
 ```csharp
-public delegate byte[] CustomLoader(ref string filepath);
-public void LuaEnv.AddLoader(CustomLoader loader)
+    public delegate byte[] CustomLoader(ref string filepath);
+    public void LuaEnv.AddLoader(CustomLoader loader)
 ```
 
-通过AddLoader可以注册个回调，该回调参数是字符串，lua代码里头调用require时，参数将会透传给回调，回调中就可以根据这个参数去加载指定文件，如果需要支持调试，需要把filepath修改为真实路径传出。该回调返回值是一个byte数组，如果为空表示该loader找不到，否则则为lua文件的内容。
-有了这个就简单了，用IIPS的IFS？没问题。写个loader调用IIPS的接口读文件内容即可。文件已经加密？没问题，自己写loader读取文件解密后返回即可。。。
-完整示例见XLua\Tutorial\LoadLuaScript\Loader
+通过`AddLoader`可以注册个回调，该回调参数是字符串，`lua`代码里头调用`require`时，参数将会透传给回调，回调中就可以根据这个参数去加载指定文件，如果需要支持调试，需要把`filepath`修改为真实路径传出。该回调返回值是一个`byte`数组，如果为空表示该`loader`找不到，否则则为`lua`文件的内容。
+有了这个就简单了，用IIPS的IFS？没问题。写个`loader`调用IIPS的接口读文件内容即可。文件已经加密？没问题，自己写`loader`读取文件解密后返回即可。。。
+完整示例见`XLua\Tutorial\LoadLuaScript\Loader`
 
 ###C#访问Lua
-这里指的是C#主动发起对Lua数据结构的访问。
-本章涉及到的例子都可以在XLua\Tutorial\CSharpCallLua下找到。
+
+这里指的是`C#`主动发起对`Lua`数据结构的访问。
+本章涉及到的例子都可以在`XLua\Tutorial\CSharpCallLua`下找到。
+
 ####一、获取一个全局基本数据类型
-访问LuaEnv.Global就可以了，上面有个模版Get方法，可指定返回的类型。
+
+访问`LuaEnv.Global`就可以了，上面有个模版`Get`方法，可指定返回的类型。
 
 ```csharp
-luaenv.Global.Get<int>("a")
-luaenv.Global.Get<string>("b")
-luaenv.Global.Get<bool>("c")
+    luaenv.Global.Get<int>("a")
+    luaenv.Global.Get<string>("b")
+    luaenv.Global.Get<bool>("c")
 ```
 
 ####二、访问一个全局的table
