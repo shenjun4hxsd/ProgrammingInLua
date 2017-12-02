@@ -1,4 +1,6 @@
-##U3DScripting
+## U3DScripting
+
+
 
 ```csharp
     using UnityEngine;
@@ -6,68 +8,68 @@
     using System.Collections.Generic;
     using XLua;
     using System;
-    
+
     [System.Serializable]
     public class Injection
     {
         public string name;
         public GameObject value;
     }
-    
+
     [LuaCallCSharp]
     public class LuaBehaviour : MonoBehaviour {
         public TextAsset luaScript;
         public Injection[] injections;
-    
+
         internal static LuaEnv luaEnv = new LuaEnv(); //all lua behaviour shared one luaenv only!
         internal static float lastGCTime = 0;
         internal const float GCInterval = 1;//1 second 
-    
+
         private Action luaStart;
         private Action luaUpdate;
         private Action luaOnDestroy;
-    
+
         private LuaTable scriptEnv;
-    
+
         void Awake()
         {
             scriptEnv = luaEnv.NewTable();
-    
+
             LuaTable meta = luaEnv.NewTable();
             meta.Set("__index", luaEnv.Global);
             scriptEnv.SetMetaTable(meta);
             meta.Dispose();
-    
+
             scriptEnv.Set("self", this);
             foreach (var injection in injections)
             {
                 scriptEnv.Set(injection.name, injection.value);
             }
-    
+
             luaEnv.DoString(luaScript.text, "LuaBehaviour", scriptEnv);
-    
+
             Action luaAwake = scriptEnv.Get<Action>("awake");
             scriptEnv.Get("start", out luaStart);
             scriptEnv.Get("update", out luaUpdate);
             scriptEnv.Get("ondestroy", out luaOnDestroy);
-    
+
             if (luaAwake != null)
             {
                 luaAwake();
             }
         }
-    
-    	// Use this for initialization
-    	void Start ()
+
+        // Use this for initialization
+        void Start ()
         {
             if (luaStart != null)
             {
                 luaStart();
             }
-    	}
-    	
-    	// Update is called once per frame
-    	void Update ()
+        }
+
+        // Update is called once per frame
+        void Update ()
         {
             if (luaUpdate != null)
             {
@@ -78,8 +80,8 @@
                 luaEnv.Tick();
                 LuaBehaviour.lastGCTime = Time.time;
             }
-    	}
-    
+        }
+
         void OnDestroy()
         {
             if (luaOnDestroy != null)
@@ -95,21 +97,26 @@
     }
 ```
 
-####LuaTestScript.lua.txt
+#### 
+
+#### LuaTestScript.lua.txt
 
 ```lua
     local speed = 10
-    
+
     function start()
-    	print("lua start...")
+        print("lua start...")
     end
-    
+
     function update()
-    	local r = CS.UnityEngine.Vector3.up * CS.UnityEngine.Time.deltaTime * speed
-    	self.transform:Rotate(r)
+        local r = CS.UnityEngine.Vector3.up * CS.UnityEngine.Time.deltaTime * speed
+        self.transform:Rotate(r)
     end
-    
+
     function ondestroy()
         print("lua destroy")
     end
 ```
+
+
+
