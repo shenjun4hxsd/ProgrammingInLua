@@ -62,4 +62,5 @@
   * [3.6 Coroutine](第三章 XLua教程/3_6 Coroutine.md)
   * [3.7 AsyncTest](第三章 XLua教程/3_7 AsyncTest.md)
   * [3.8 Hotfix](第三章 XLua教程/3_8 Hotfix.md)
+  * [3.9 GenericMethod](第三章 XLua教程/3_9 GenericMethod.md)
 
