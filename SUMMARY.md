@@ -60,4 +60,5 @@
   * [3.4 LuaObjectOrented](第三章 XLua教程/3_4 LuaObjectOrented.md)
   * [3.5 NoGc](第三章 XLua教程/3_5 NoGc.md)
   * [3.6 Coroutine](第三章 XLua教程/3_6 Coroutine.md)
+  * [3.7 AsyncTest](第三章 XLua教程/3_7 AsyncTest.md)
 
