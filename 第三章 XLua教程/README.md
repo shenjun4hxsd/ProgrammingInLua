@@ -116,6 +116,7 @@
 参数、返回值类型支持哪些呢？都支持，各种复杂类型，`out`，`ref`修饰的，甚至可以返回另外一个`delegate`。
 `delegate`的使用就更简单了，直接像个函数那样用就可以了。
 
+1、基本数据类型
 ```csharp
     [CSharpCallLua]
     public delegate int IntParam(int p);
@@ -133,6 +134,7 @@
     Debug.Log(f1(1));  // 1
 ```
 
+2、结构体
 ```csharp
     [CSharpCallLua]
     public delegate Vector3 Vector3Param(Vector3 p);
@@ -145,7 +147,35 @@
     Debug.Log(f2(v3));    // (1.0, 2.0, 3.0)
 ```
 
+3、自定义值类型
+```csharp
+    [GCOptimize]
+    [LuaCallCSharp]
+    public struct Pedding
+    {
+        public byte c;
+    }
 
+    [GCOptimize]
+    [LuaCallCSharp]
+    public struct MyStruct
+    {
+        public MyStruct(int p1, int p2)
+        {
+            a = p1;
+            b = p2;
+            c = p2;
+            e.c = (byte)p1;
+        }
+        public int a;
+        public int b;
+        public decimal c;
+        public Pedding e;
+    }
+    
+    [CSharpCallLua]
+    public delegate MyStruct CustomValueTypeParam(MyStruct p);
+```
 
 **2、映射到LuaFunction**
 
