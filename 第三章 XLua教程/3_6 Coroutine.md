@@ -56,6 +56,7 @@
     assert(coroutine.resume(co))
 ```
 
+####cs_coroutine.lua.txt
 ```lua
     local util = require 'xlua.util'
     
