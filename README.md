@@ -236,15 +236,19 @@ pc用户：
 
 #### 4.6、xLua
 
-xLua是Unity3D下Lua编程解决方案，自2016年初推广以来，已经应用于十多款腾讯自研游戏，凭借其出色的性能，易用性，扩展性而广受好评。
+xLua是腾讯开源的Unity3D下Lua编程解决方案，自2016年初推广以来，已经应用于十多款腾讯自研游戏，凭借其出色的性能，易用性，扩展性而广受好评。
 
 xLua在功能、性能、易用性都有不少突破，这几方面分别最具代表性的是：
+
+    Unity3D全平台热补丁技术，可以运行时把C#实现（方法，操作符，属性，事件，构造函数，析构函数，支持泛化）替换成lua实现；
+    自定义struct，枚举在Lua和C#间传递无C# gc alloc；
+    编辑器下无需生成代码，开发更轻量；
 
 Unity3D全平台热补丁技术，可以运行时把C#实现（方法，操作符，属性，事件，构造函数，析构函数，支持泛化）替换成lua实现；
 自定义struct，枚举在Lua和C#间传递无C# gc alloc；
 编辑器下无需生成代码，开发更轻量；
 
-[https://github.com/Tencent/xlua](https://github.com/Tencent/xlua)
+官方开源网址：[https://github.com/Tencent/xlua](https://github.com/Tencent/xlua)
 
 **综合来看 肯定是 xLua 会更好一些，uLua次之。**
 
