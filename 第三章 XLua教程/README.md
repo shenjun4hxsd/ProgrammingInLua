@@ -248,6 +248,26 @@
     local newGameObj2 = CS.UnityEngine.GameObject('helloworld')
 ```
 
+####C#传参数到Lua
+
+```csharp
+    public float FloatParamMethod(float p)
+    {
+        return p;
+    }
+```
+
+```csharp
+    luaenv.DoString(@"
+        function lua_access_csharp()
+            monoBehaviour:
+        end
+    ");
+
+    luaenv.Global.Set("monoBehaviour", this);
+```
+
+
 ####访问`C#`静态属性，方法
 读静态属性
 ```csharp
