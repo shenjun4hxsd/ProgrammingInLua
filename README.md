@@ -246,9 +246,9 @@ xLua在功能、性能、易用性都有不少突破，这几方面分别最具�
 
 官方开源网址：[https://github.com/Tencent/xlua](https://github.com/Tencent/xlua)
 
-**综合来看 肯定是 xLua 会更好一些，uLua次之。**
+**综合来看 肯定是 xLua 会更好一些，uLua & cstoLua 次之。**
 
-    第二章介绍uLua在Unity中的框架LuaFramework。
+    第二章介绍 uLua & cstoLua 在Unity中的框架LuaFramework。
     第三章介绍xLua在Unity中的框架。
  
 
