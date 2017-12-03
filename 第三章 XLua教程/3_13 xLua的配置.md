@@ -81,21 +81,120 @@
 
 ###XLua.AdditionalProperties
 
-这个是GCOptimize的扩展配置，有的时候，一些struct喜欢把field做成是私有的，通过property来访问field，这时就需要用到该配置（默认情况下GCOptimize只对public的field打解包）。
-标签方式比较简单，配置方式复杂一点，要求是Dictionary<Type, List<string>>类型，Dictionary的Key是要生效的类型，Value是属性名列表。可以参考XLua对几个UnityEngine下值类型的配置，SysGCOptimize类。
-XLua.BlackList
-如果你不要生成一个类型的一些成员的适配代码，你可以通过这个配置来实现。
-标签方式比较简单，对应的成员上加就可以了。
-由于考虑到有可能需要把重载函数的其中一个重载列入黑名单，配置方式比较复杂，类型是List<List<string>>，对于每个成员，在第一层List有一个条目，第二层List是个string的列表，第一个string是类型的全路径名，第二个string是成员名，如果成员是一个方法，还需要从第三个string开始，把其参数的类型全路径全列出来。
-例如下面是对GameObject的一个属性以及FileInfo的一个方法列入黑名单：
-[BlackList]
-public static List<List<string>> BlackList = new List<List<string>>()  {
-    new List<string>(){"UnityEngine.GameObject", "networkView"},
-    new List<string>(){"System.IO.FileInfo", "GetAccessControl", "System.Security.AccessControl.AccessControlSections"},
-};
+这个是`GCOptimize`的扩展配置，有的时候，一些`struct`喜欢把`field`做成是私有的，通过`property`来访问`field`，这时就需要用到该配置（默认情况下`GCOptimize`只对`public`的`field`打解包）。
 
-下面是生成期配置，必须放到Editor目录下
-CSObjectWrapEditor.GenPath
-配置生成代码的放置路径，类型是string。默认放在“Assets/XLua/Gen/”下。
-CSObjectWrapEditor.GenCodeMenu
-该配置用于生成引擎的二次开发，一个无参数函数加了这个标签，在执行“XLua/Generate Code”菜单时会触发这个函数的调用。
+标签方式比较简单，配置方式复杂一点，要求是`Dictionary<Type, List<string>>`类型，`Dictionary`的`Key`是要生效的类型，`Value`是属性名列表。可以参考`XLua`对几个`UnityEngine`下值类型的配置，`SysGCOptimize`类。
+
+###XLua.BlackList
+
+如果你不要生成一个类型的一些成员的适配代码，你可以通过这个配置来实现。
+
+标签方式比较简单，对应的成员上加就可以了。
+
+由于考虑到有可能需要把重载函数的其中一个重载列入黑名单，配置方式比较复杂，类型是`List<List<string>>`，对于每个成员，在第一层`List`有一个条目，第二层`List`是个`string`的列表，第一个`string`是类型的全路径名，第二个`string`是成员名，如果成员是一个方法，还需要从第三个`string`开始，把其参数的类型全路径全列出来。
+例如下面是对`GameObject`的一个属性以及`FileInfo`的一个方法列入黑名单：
+
+```csharp
+    [BlackList]
+    public static List<List<string>> BlackList = new List<List<string>>()  {
+        new List<string>(){"UnityEngine.GameObject", "networkView"},
+        new List<string>(){"System.IO.FileInfo", "GetAccessControl", "System.Security.AccessControl.AccessControlSections"},
+    };
+```
+
+###下面是生成期配置，必须放到Editor目录下
+
+####CSObjectWrapEditor.GenPath
+
+配置生成代码的放置路径，类型是`string`。默认放在“`Assets/XLua/Gen/`”下。
+
+####CSObjectWrapEditor.GenCodeMenu
+
+该配置用于生成引擎的二次开发，一个无参数函数加了这个标签，在执行“`XLua/Generate Code`”菜单时会触发这个函数的调用。
+
+
+####ExampleGenConfig.cs
+
+```csharp
+    using System.Collections.Generic;
+    using System;
+    using UnityEngine;
+    using XLua;
+    
+    //配置的详细介绍请看Doc下《XLua的配置.doc》
+    public static class ExampleGenConfig
+    {
+        //lua中要使用到C#库的配置，比如C#标准库，或者Unity API，第三方库等。
+        [LuaCallCSharp]
+        public static List<Type> LuaCallCSharp = new List<Type>() {
+                    typeof(System.Object),
+                    typeof(UnityEngine.Object),
+                    typeof(Vector2),
+                    typeof(Vector3),
+                    typeof(Vector4),
+                    typeof(Quaternion),
+                    typeof(Color),
+                    typeof(Ray),
+                    typeof(Bounds),
+                    typeof(Ray2D),
+                    typeof(Time),
+                    typeof(GameObject),
+                    typeof(Component),
+                    typeof(Behaviour),
+                    typeof(Transform),
+                    typeof(Resources),
+                    typeof(TextAsset),
+                    typeof(Keyframe),
+                    typeof(AnimationCurve),
+                    typeof(AnimationClip),
+                    typeof(MonoBehaviour),
+                    typeof(ParticleSystem),
+                    typeof(SkinnedMeshRenderer),
+                    typeof(Renderer),
+                    typeof(WWW),
+                    typeof(System.Collections.Generic.List<int>),
+                    typeof(Action<string>),
+                    typeof(UnityEngine.Debug)
+                };
+    
+        //C#静态调用Lua的配置（包括事件的原型），仅可以配delegate，interface
+        [CSharpCallLua]
+        public static List<Type> CSharpCallLua = new List<Type>() {
+                    typeof(Action),
+                    typeof(Func<double, double, double>),
+                    typeof(Action<string>),
+                    typeof(Action<double>),
+                    typeof(UnityEngine.Events.UnityAction),
+                    typeof(System.Collections.IEnumerator)
+                };
+    
+        //黑名单
+        [BlackList]
+        public static List<List<string>> BlackList = new List<List<string>>()  {
+                    new List<string>(){"UnityEngine.WWW", "movie"},
+        #if UNITY_WEBGL
+                    new List<string>(){"UnityEngine.WWW", "threadPriority"},
+        #endif
+                    new List<string>(){"UnityEngine.Texture2D", "alphaIsTransparency"},
+                    new List<string>(){"UnityEngine.Security", "GetChainOfTrustValue"},
+                    new List<string>(){"UnityEngine.CanvasRenderer", "onRequestRebuild"},
+                    new List<string>(){"UnityEngine.Light", "areaSize"},
+                    new List<string>(){"UnityEngine.AnimatorOverrideController", "PerformOverrideClipListCleanup"},
+        #if !UNITY_WEBPLAYER
+                    new List<string>(){"UnityEngine.Application", "ExternalEval"},
+        #endif
+                    new List<string>(){"UnityEngine.GameObject", "networkView"}, //4.6.2 not support
+                    new List<string>(){"UnityEngine.Component", "networkView"},  //4.6.2 not support
+                    new List<string>(){"System.IO.FileInfo", "GetAccessControl", "System.Security.AccessControl.AccessControlSections"},
+                    new List<string>(){"System.IO.FileInfo", "SetAccessControl", "System.Security.AccessControl.FileSecurity"},
+                    new List<string>(){"System.IO.DirectoryInfo", "GetAccessControl", "System.Security.AccessControl.AccessControlSections"},
+                    new List<string>(){"System.IO.DirectoryInfo", "SetAccessControl", "System.Security.AccessControl.DirectorySecurity"},
+                    new List<string>(){"System.IO.DirectoryInfo", "CreateSubdirectory", "System.String", "System.Security.AccessControl.DirectorySecurity"},
+                    new List<string>(){"System.IO.DirectoryInfo", "Create", "System.Security.AccessControl.DirectorySecurity"},
+                    new List<string>(){"UnityEngine.MonoBehaviour", "runInEditMode"},
+                };
+    }
+```
+
+
+🔚
