@@ -176,6 +176,12 @@
     [CSharpCallLua]
     public delegate MyStruct CustomValueTypeParam(MyStruct p);
 ```
+```csharp
+    CustomValueTypeParam f3;
+    luaenv.Global.Get("id", out f3);
+    MyStruct mystruct = new MyStruct(5, 6);
+    Debug.Log(f3(mystruct));
+```
 
 **2、映射到LuaFunction**
 
