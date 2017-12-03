@@ -20,6 +20,7 @@
   * [1.16 字符串库](第一章 Lua程序设计/1_16 字符串库.md)
   * [1.17 I／O库](第一章 Lua程序设计/1_17 I／O库.md)
   * [1.18 用户自定义类型](第一章 Lua程序设计/1_18 用户自定义类型.md)
+  * [1.30 练习题](第一章 Lua程序设计/1_30 练习题.md)
 * [第二章 LuaFramework](第二章 LuaFramework/README.md)
   * [2.1 HelloWorld](第二章 LuaFramework/2_1 HelloWorld.md)
   * [2.2 ScriptsFromFile](第二章 LuaFramework/2_2 ScriptsFromFile.md)
