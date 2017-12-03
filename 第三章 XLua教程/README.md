@@ -122,6 +122,12 @@
                 return setmetatable({Mult = mult}, calc_mt)
             end
         }
+        
+        CalcNew calc_new = luaenv.Global.GetInPath<CalcNew>("Calc.New");
+        ICalc calc = calc_new(10, "hi", "join");
+        Debug.Log(calc.Add(1, 2));
+        calc.Mult = 100;
+        Debug.Log(calc.Add(1, 2));
     ");
 ```
 
