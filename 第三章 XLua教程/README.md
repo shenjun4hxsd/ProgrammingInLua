@@ -105,6 +105,19 @@
     public delegate CalcNew(int mult, params string[] args);
 ```
 
+```csharp
+    LuaEnv luaenv = new LuaEnv();
+    luaenv.DoString(@"
+        local calc_mt = {
+            __index = {
+                Add = function(self, a, b)
+                    return (a + b) * self.Mult
+                end
+            }
+        }
+    ");
+```
+
 **3、更轻量级的by value方式**：映射到`Dictionary<>`，`List<>`  
 不想定义`class`或者`interface`的话，可以考虑用这个，前提`table`下`key`和`value`的类型都是一致的。
 
