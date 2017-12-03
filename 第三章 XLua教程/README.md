@@ -183,6 +183,19 @@
     Debug.Log(f3(mystruct).e.c);    // 5
 ```
 
+4、枚举类型
+```csharp
+    [LuaCallCSharp]
+    public enum MyEnum
+    {
+        E1,
+        E2
+    }
+    
+    [CSharpCallLua]
+    public MyEnum EnumParam(MyEnum p);
+```
+
 **2、映射到LuaFunction**
 
 这种方式的优缺点刚好和第一种相反。
