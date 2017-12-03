@@ -133,6 +133,11 @@
     Debug.Log(f1(1));  // 1
 ```
 
+```csharp
+    [CSharpCallLua]
+    public delegate Vector3 Vector3Param(Vector3 p);
+```
+
 
 
 **2、映射到LuaFunction**
