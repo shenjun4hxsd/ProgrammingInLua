@@ -272,7 +272,7 @@
     luaenv.Global.Set("monoBehaviour", this);
     MyDel flua;
     luaenv.Global.Get("lua_access_csharp", out flua);
-    Debug.Log(flua(0.5f));
+    Debug.Log(flua(0.5f));    // 0.5
     
 ```
 
