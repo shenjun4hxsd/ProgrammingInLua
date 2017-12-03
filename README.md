@@ -244,6 +244,8 @@ Unity3D全平台热补丁技术，可以运行时把C#实现（方法，操作�
 自定义struct，枚举在Lua和C#间传递无C# gc alloc；
 编辑器下无需生成代码，开发更轻量；
 
+[https://github.com/Tencent/xlua](https://github.com/Tencent/xlua)
+
 **综合来看 肯定是 xLua 会更好一些，uLua次之。**
 
     第二章介绍uLua在Unity中的框架LuaFramework。
