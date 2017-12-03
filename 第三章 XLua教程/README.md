@@ -14,7 +14,9 @@
 最基本是直接用`LuaEnv.DoString`执行一个字符串，当然，字符串得符合`Lua`语法
 比如：
 ```csharp
+    LuaEnv luaenv = new LuaEnv();
     luaenv.DoString("print('hello world')")
+    luaenv.Dispose();
 ```
 完整代码见`XLua\Tutorial\LoadLuaScript\ByString`目录
 但这种方式并不建议，更建议下面介绍这种方法。
