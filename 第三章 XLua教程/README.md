@@ -93,6 +93,22 @@
 
 这种方式依赖于生成代码（如果没生成代码会抛`InvalidCastException`异常），代码生成器会生成这个`interface`的实例，如果`get`一个属性，生成代码会`get`对应的`table`字段，如果`set`属性也会设置对应的字段。甚至可以通过`interface`的方法访问`lua`的函数。
 
+```csharp
+    [CSharpCallLua]
+    public delegate int IntParam(int p);
+```
+
+```csharp
+    LuaEnv luaenv = new LuaEnv();
+    luaenv.DoString(@"
+        function id(...)
+            return ...
+        end
+    ");
+    IntParam f1;
+    luaenv.Global.Get("id", out f1);
+```
+
 **3、更轻量级的by value方式**：映射到`Dictionary<>`，`List<>`
 不想定义`class`或者`interface`的话，可以考虑用这个，前提`table`下`key`和`value`的类型都是一致的。
 
