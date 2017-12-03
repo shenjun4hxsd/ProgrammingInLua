@@ -248,8 +248,8 @@ xLua在功能、性能、易用性都有不少突破，这几方面分别最具�
 
 **综合来看 肯定是 xLua 会更好一些，uLua & cstoLua 次之。**
 
-    第二章介绍 uLua & cstoLua 在Unity中的框架LuaFramework。
-    第三章介绍xLua在Unity中的框架。
+    第二章介绍 uLua & cstoLua 在 Unity 中的框架 LuaFramework。
+    第三章介绍 xLua 在 Unity 中的框架。
  
 
 ## 五、LuaFramework 实践
