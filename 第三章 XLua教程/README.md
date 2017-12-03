@@ -180,7 +180,7 @@
     CustomValueTypeParam f3;
     luaenv.Global.Get("id", out f3);
     MyStruct mystruct = new MyStruct(5, 6);
-    Debug.Log(f3(mystruct));
+    Debug.Log(f3(mystruct).e.c);    // 5
 ```
 
 **2、映射到LuaFunction**
