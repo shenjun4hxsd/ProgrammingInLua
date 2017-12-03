@@ -260,11 +260,15 @@
 ```csharp
     luaenv.DoString(@"
         function lua_access_csharp()
-            monoBehaviour:
+            return monoBehaviour:FloatParamMethod(123);
         end
     ");
 
     luaenv.Global.Set("monoBehaviour", this);
+    Func<float, float> flua;
+    luaenv.Global.Get("lua_access_csharp", out flua);
+    Debug.Log(flua(0.5f));
+    
 ```
 
 
