@@ -64,4 +64,5 @@
   * [3.8 Hotfix](第三章 XLua教程/3_8 Hotfix.md)
   * [3.9 GenericMethod](第三章 XLua教程/3_9 GenericMethod.md)
   * [3.10 SignatureLoader](第三章 XLua教程/3_10 SignatureLoader.md)
+  * [3.11 RawObject](第三章 XLua教程/3_11 RawObject.md)
 
