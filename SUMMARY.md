@@ -66,4 +66,5 @@
   * [3.10 SignatureLoader](第三章 XLua教程/3_10 SignatureLoader.md)
   * [3.11 RawObject](第三章 XLua教程/3_11 RawObject.md)
   * [3.12 RelmplementInLua](第三章 XLua教程/3_12 ReImplementInLua.md)
+  * [3.13 xLua的配置](第三章 XLua教程/3_13 xLua的配置.md)
 
