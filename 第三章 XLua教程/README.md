@@ -251,6 +251,11 @@
 ####C#传参数到Lua
 
 ```csharp
+    [CSharpCallLua]
+    public delegate float MyDel(float p);
+```
+
+```csharp
     public float FloatParamMethod(float p)
     {
         return p;
@@ -265,7 +270,7 @@
     ");
 
     luaenv.Global.Set("monoBehaviour", this);
-    Func<float, float> flua;
+    MyDel flua;
     luaenv.Global.Get("lua_access_csharp", out flua);
     Debug.Log(flua(0.5f));
     
