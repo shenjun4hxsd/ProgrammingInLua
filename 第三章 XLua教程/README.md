@@ -115,6 +115,13 @@
                 end
             }
         }
+        
+        Calc = {
+            New = function(mult, ...)
+                print(...)
+                return setmetatable({Mult = mult}, calc_mt)
+            end
+        }
     ");
 ```
 
