@@ -199,7 +199,7 @@
 ```csharp
     EnumParam f4;
     luaenv.Global.Get("id", out f4);
-    Debug.Log(f4(MyEnum.E1));
+    Debug.Log(f4(MyEnum.E1));    // E1
 ```
 
 **2、映射到LuaFunction**
