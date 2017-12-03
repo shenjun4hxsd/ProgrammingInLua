@@ -138,6 +138,13 @@
     public delegate Vector3 Vector3Param(Vector3 p);
 ```
 
+```csharp
+    Vector3Param f2;
+    luaenv.Global.Get("id", out f2);
+    Vector3 v3 = new Vector3(1, 2, 3);
+    Debug.Log(f2(v3));    // (1.0, 2.0, 3.0)
+```
+
 
 
 **2、映射到LuaFunction**
