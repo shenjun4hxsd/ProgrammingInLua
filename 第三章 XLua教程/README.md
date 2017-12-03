@@ -196,6 +196,12 @@
     public MyEnum EnumParam(MyEnum p);
 ```
 
+```csharp
+    EnumParam f4;
+    luaenv.Global.Get("id", out f4);
+    Debug.Log(f4(MyEnum.E1));
+```
+
 **2、映射到LuaFunction**
 
 这种方式的优缺点刚好和第一种相反。
