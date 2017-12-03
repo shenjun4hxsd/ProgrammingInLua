@@ -24,7 +24,7 @@
 用lua的`require`函数即可
 比如：
 ```csharp
-    DoString("require 'byfile'")
+    luaenv.DoString("require 'byfile'")
 ```
 完整代码见`XLua\Tutorial\LoadLuaScript\ByFile`目录
 
