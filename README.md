@@ -244,10 +244,6 @@ xLua在功能、性能、易用性都有不少突破，这几方面分别最具�
     自定义struct，枚举在Lua和C#间传递无C# gc alloc；
     编辑器下无需生成代码，开发更轻量；
 
-Unity3D全平台热补丁技术，可以运行时把C#实现（方法，操作符，属性，事件，构造函数，析构函数，支持泛化）替换成lua实现；
-自定义struct，枚举在Lua和C#间传递无C# gc alloc；
-编辑器下无需生成代码，开发更轻量；
-
 官方开源网址：[https://github.com/Tencent/xlua](https://github.com/Tencent/xlua)
 
 **综合来看 肯定是 xLua 会更好一些，uLua次之。**
@@ -256,7 +252,7 @@ Unity3D全平台热补丁技术，可以运行时把C#实现（方法，操作�
     第三章介绍xLua在Unity中的框架。
  
 
-## 五、实践
+## 五、uLua实践
 
 熟悉NGUI的小伙伴可以参考这里：
 
