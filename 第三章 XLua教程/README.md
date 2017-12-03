@@ -100,6 +100,9 @@
         int Add(int a, int b);
         int Mult { get; set; }
     }
+    
+    [CSharpCallLua]
+    public delegate CalcNew(int mult, params string[] args);
 ```
 
 **3、更轻量级的by value方式**：映射到`Dictionary<>`，`List<>`  
