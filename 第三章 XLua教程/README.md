@@ -107,6 +107,7 @@
     ");
     IntParam f1;
     luaenv.Global.Get("id", out f1);
+    Debug.Log(f1(1));  // 1
 ```
 
 **3、更轻量级的by value方式**：映射到`Dictionary<>`，`List<>`
