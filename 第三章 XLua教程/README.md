@@ -32,7 +32,8 @@
 
 `require`实际上是调一个个的`loader`去加载，有一个成功就不再往下尝试，全失败则报文件找不到。
 目前xLua除了原生的`loader`外，还添加了从`Resource`加载的`loader`，需要注意的是因为`Resource`只支持有限的后缀，放`Resources`下的`lua`文件得加上`txt`后缀（见附带的例子）。
-建议的加载`Lua`脚本方式是：整个程序就一个`DoString("require 'main'")`，然后在`main.lua`加载其它脚本（类似`lua`脚本的命令行执行：`lua main.lua`）。
+
+>建议的加载`Lua`脚本方式是：整个程序就一个`DoString("require 'main'")`，然后在`main.lua`加载其它脚本（类似`lua`脚本的命令行执行：`lua main.lua`）。
 有童鞋会问：要是我的`Lua`文件是下载回来的，或者某个自定义的文件格式里头解压出来，或者需要解密等等，怎么办？问得好，`xLua`的自定义`Loader`可以满足这些需求。
 
 ####三、自定义Loader
@@ -45,7 +46,7 @@
 ```
 
 通过`AddLoader`可以注册个回调，该回调参数是字符串，`lua`代码里头调用`require`时，参数将会透传给回调，回调中就可以根据这个参数去加载指定文件，如果需要支持调试，需要把`filepath`修改为真实路径传出。该回调返回值是一个`byte`数组，如果为空表示该`loader`找不到，否则则为`lua`文件的内容。
-有了这个就简单了，用IIPS的IFS？没问题。写个`loader`调用IIPS的接口读文件内容即可。文件已经加密？没问题，自己写`loader`读取文件解密后返回即可。。。
+有了这个就简单了，用IIPS(交互式信息处理系统)的IFS？没问题。写个`loader`调用IIPS的接口读文件内容即可。文件已经加密？没问题，自己写`loader`读取文件解密后返回即可。。。
 完整示例见`XLua\Tutorial\LoadLuaScript\Loader`
 
 &emsp;
