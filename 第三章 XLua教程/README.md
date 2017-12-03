@@ -71,6 +71,10 @@
     luaenv.Global.Get<int>("a")
     luaenv.Global.Get<string>("b")
     luaenv.Global.Get<bool>("c")
+    
+    int d;
+    luaenv.Global.Get("d", out d)
+    luaenv.Global.SetInPath("d", d+1);
 ```
 
 &emsp;
