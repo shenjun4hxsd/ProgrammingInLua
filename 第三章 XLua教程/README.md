@@ -248,6 +248,18 @@
     local newGameObj2 = CS.UnityEngine.GameObject('helloworld')
 ```
 
+####C#创建Lua全局变量
+```csharp
+    luaenv.Global.Set("g_int", 123);
+    luaenv.Global.Set(123, 456);
+    int i;
+    luaenv.Global.Get("g_int", out i);
+    Debug.Log(i);    // 123
+    luaenv.Global.Get(123, out i);
+    Debug.Log(i);    // 456
+```
+
+
 ####C#传参数到Lua
 
 ```csharp
