@@ -118,6 +118,13 @@
                  "file_regex": "^(...*?):([0-9]*):?([0-9]*)",  
                  "selector": "source.lua"  
                 }  
+                
+                // Windows 配置
+                { 
+	                "cmd": ["C:/Program Files (x86)/Lua5.3/luac.exe", "$file"], 
+	                 "file_regex": "^(?:lua:)?[\t ](...*?):([0-9]*):?([0-9]*)", 
+	                 "selector": "source.lua" 
+                }
 
 &emsp;&emsp;方法2:
 
