@@ -92,19 +92,44 @@
 
 &emsp;&emsp;
 
-###Mac下环境配置
+###Lua环境配置
 &emsp;&emsp;
 &emsp;&emsp;**● 下载Lua：**
 
                 www.lua.org
         
-&emsp;&emsp;**● 终端安装：**
+&emsp;&emsp;**● Mac终端安装：**
 
                 make macosx
                 sudo make install
                 lua -v        （测试是否安装成功）
  
 &emsp;&emsp;
+&emsp;&emsp;**● Windows下源码编译**
+新建VC++解决方案，在该解决方案下建3个项目，分别是lua库项目，lua编译器项目，lua解释器项目。
+
+		1). 建lua库项目：Lua53
+			选择Dll和空项目。
+			编译模式改成release模式
+			把源码中src目录下的所有.h文件拷贝到项目中的头文件节点下
+			把源码中src目录下的除了lua.c和luac.c所有.c文件加入工程下的源文件目录
+			然后设置项目属性，更改项目编译库类型为 静态库(.lib)
+			最后编译运行，在项目文件夹release目录下产生了Lua53.lib文件，即lua库生成成功。
+
+		2). 建lua编译器项目：Luac
+			选择控制台应用程序和空项目
+			编译模式改成release模式
+			把源码中src目录下的所有.h文件拷贝到项目中的头文件节点下
+			把源码中src目录下的除了lua.c所有.c文件加入工程下的源文件目录
+			然后设置项目属性，更改项目编译库类型为 应用程序（.exe）
+			最后编译运行，在项目文件夹release目录下产生了Luac.exe文件，即lua编译器文件生成成功。
+
+		3). 建lua解释器项目：Lua
+			步骤同建编译器项目，区别是添加src源文件时，不添加luac.c文件。
+			编译完成后release目录下多了一个lua.exe文件。即lua解释器文件生成成功。
+		4). 把编译好的release目录下的文件拷贝到 C:/Program Files (x86)/Lua5.3 目录下，并修改环境变量，把此路径添加进去。
+
+
        
 &emsp;&emsp;**● sublime 设置：**
 
@@ -137,7 +162,7 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
 
 &emsp;&emsp;
 
-&emsp;&emsp;**● 插件安装：**
+&emsp;&emsp;**● Sublime Text2 可选插件安装：**
 
 ```
         Tools -> Command Palette ...
@@ -169,6 +194,7 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
 &emsp;&emsp;**● 运行：**
 
         command + b
+        F7
         
 &emsp;&emsp;
 &emsp;&emsp;**● Sublime激活码：**
