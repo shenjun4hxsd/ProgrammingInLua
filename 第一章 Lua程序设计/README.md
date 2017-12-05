@@ -112,7 +112,7 @@
 
                 菜单 Tools -> Build System -> New Build System
                 
-                // mac 配置
+                // Mac 配置
                 {  
                  "cmd": ["/usr/local/bin/lua", "$file"],  
                  "file_regex": "^(...*?):([0-9]*):?([0-9]*)",  
