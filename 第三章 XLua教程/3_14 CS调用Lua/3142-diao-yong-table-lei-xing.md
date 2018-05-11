@@ -163,7 +163,7 @@
     }
 ```
 
-####2）、映射到Interface
+####二、映射到Interface
 
 ```csharp
     /*
