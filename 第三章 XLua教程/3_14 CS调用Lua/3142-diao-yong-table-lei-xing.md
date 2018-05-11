@@ -232,3 +232,54 @@
     }
 ```
 
+####三、映射到Dictionary和List
+
+```csharp
+    /*
+     *  created by shenjun
+     */
+    
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using XLua;
+    
+    namespace shenjun
+    {
+    	public class TableToDicOrList : MonoBehaviour {
+    
+            LuaEnv luaEnv = new LuaEnv();
+    
+    		void Start () {
+    
+                luaEnv.DoString("require 'TableLua'");
+    
+                // 值拷贝 只能获取匹配的
+    
+                Dictionary<string, string> dic = new Dictionary<string, string>();
+                dic = luaEnv.Global.Get<Dictionary<string, string>>("student");
+                foreach (var item in dic.Keys)
+                {
+                    Debug.Log("key :" + item + ", value :" + dic[item]);
+                }
+    
+                List<int> list = new List<int>();
+                list = luaEnv.Global.Get<List<int>>("student");
+                foreach (var item in list)
+                {
+                    Debug.Log(item);
+                }
+            }
+    		
+    		void Update () {
+    
+    		}
+    
+            private void OnDestroy()
+            {
+                luaEnv.Dispose();
+            }
+        }
+    }
+```
+
