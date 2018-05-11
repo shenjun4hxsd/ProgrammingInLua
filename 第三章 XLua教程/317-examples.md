@@ -200,5 +200,86 @@
 
 
 ```csharp
-
+    /*
+     *  created by shenjun
+     */
+    
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using UnityEngine.EventSystems;
+    using XLua;
+    
+    namespace shenjun
+    {
+        //[CSharpCallLua]
+        //public delegate void OnPanelClickDel(PointerEventData eventData);
+    
+        [LuaCallCSharp]
+        public class LuaUIEventLocal : MonoBehaviour, IPointerDownHandler {
+    
+            LuaEnv luaEnv = new LuaEnv();
+            ILuaPanel panel;
+    
+            IPointerDownHandler panelPointDown;
+    
+            public void OnPointerDown(PointerEventData eventData)
+            {
+                //if (panel.OnPanelClick != null)
+                //panel.OnPanelClick(eventData);
+    
+                if (panelPointDown != null)
+                    panelPointDown.OnPointerDown(eventData);
+            }
+    
+            void Awake()
+            {
+                luaEnv.DoString("require 'LuaUIEventLocal'");
+    
+                panel = luaEnv.Global.Get<ILuaPanel>("LuaPanel");
+                panelPointDown = luaEnv.Global.Get<IPointerDownHandler>("LuaPanel");
+                //panel.self = this; // lua中也会有self的键值
+    
+                panel.Awake(this);
+            }
+    
+            void Start () {
+                
+            }
+    
+            void Update () {
+    
+                if(luaEnv != null)
+                {
+                    luaEnv.Tick();
+                }
+            }
+    
+            void OnDestroy()
+            {
+                panel.OnDestroy();
+                //if(panel.OnPanelClick != null)
+                //{
+                //    panel.OnPanelClick = null;
+                //}
+    
+                if (panelPointDown != null)
+                    panelPointDown = null;
+                luaEnv.Dispose();
+            }
+        }
+    
+        [CSharpCallLua]
+        interface ILuaPanel
+        {
+            //LuaUIEventLocal self { get; set; }
+            //OnPanelClickDel OnPanelClick { get; set; }
+            void Awake(LuaUIEventLocal self);
+            void OnDestroy();
+        }
+    
+    }
 ```
+
+
+🔚
