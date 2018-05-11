@@ -12,3 +12,39 @@
     local a, b, c = RefOutParam:RefOutParamFunc("shenjun", 10, 30)
     print("Lua Return :" ,a, b, c)
 ```
+
+**RefOutParam.cs**
+
+```csharp
+    /*
+     *  created by shenjun
+     */
+    
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using XLua;
+    
+    namespace shenjun
+    {
+        public class RefOutParam : MonoBehaviour {
+    
+    
+            void Start () {
+                LuaEnv luaEnv = new LuaEnv();
+                luaEnv.DoString("require 'RefOutParam'");
+                luaEnv.Dispose();
+            }
+    
+            void Update () {
+                
+            }
+    
+            public void RefOutParamFunc(string s, ref int a, out int b, ref int c)
+            {
+                b = 1;
+                Debug.Log("s :" + s + ", a : " + a + ", b : " + b + ", c : " + c);
+            }
+        }
+    }
+```
