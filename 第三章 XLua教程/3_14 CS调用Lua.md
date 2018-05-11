@@ -147,6 +147,93 @@
     }
 ```
 
+```csharp
+    /*
+     *  created by shenjun
+     */
+    
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    
+    using XLua;
+    
+    namespace shenjun
+    {
+        public class TableToStruct : MonoBehaviour
+        {
+    
+            LuaEnv luaEnv = new LuaEnv();
+    
+            void Start()
+            {
+                luaEnv.DoString("require 'TableLua'");
+    
+                // 对应public字段，table的属性可以多于或少于class的字段，没有对应的使用该类型的默认值
+                Student xm = luaEnv.Global.Get<Student>("student");
+                Debug.Log(xm);
+            }
+    
+            void Update()
+            {
+                if (luaEnv != null)
+                {
+                    luaEnv.Tick();
+                }
+            }
+    
+            private void OnDestroy()
+            {
+                luaEnv.Dispose();
+            }
+    
+            /*
+             * xLua复杂值类型（struct）的默认传递方式是引用传递，这种方式要求先对值类型boxing，传递给lua，
+             * lua使用后释放该引用。由于值类型每次boxing将产生一个新对象，当lua侧使用完毕释放该对象的引用时，
+             * 则产生一次gc。为此，xLua实现了一套struct的gc优化方案，您只要通过简单的配置，
+             * 则可以实现满足条件的struct传递到lua侧无gc。
+             * 
+             * struct需要满足什么条件？
+             * 1、struct允许嵌套其它struct，但它以及它嵌套的struct只能包含这几种基本类型：
+             * byte、sbyte、short、ushort、int、uint、long、ulong、float、double；
+             * 例如UnityEngine定义的大多数值类型：Vector系列，Quaternion，Color。。。均满足条件，
+             * 或者用户自定义的一些struct
+             * 2、该struct配置了GCOptimize属性（对于常用的UnityEngine的几个struct，
+             * Vector系列，Quaternion，Color。。。均已经配置了该属性），这个属性可以通过配置文件或者C# Attribute实现；
+             * 3、使用到该struct的地方，需要添加到生成代码列表；
+             */
+            [GCOptimize]
+            [LuaCallCSharp]
+            struct Student
+            {
+                public string name;
+                public int age;
+                public string Sex { get; set; }  // 无法对应table中的键
+    
+                public override string ToString()
+                {
+                    return string.Format("name : {0}, age : {1}, sex : {2}", name, age, Sex);
+                }
+            }
+    
+            //[LuaCallCSharp]
+            //public static class StructConfig
+            //{
+            //    public static List<System.Type> LuaCallCSharp
+            //    {
+            //        get
+            //        {
+            //            return new List<System.Type>()
+            //            {
+            //                typeof(Student)
+            //            };
+            //        }
+            //    }
+            //}
+        }
+    }
+```
+
 ---
 
 ```csharp
