@@ -18,3 +18,41 @@
     camera.transform:LookAt(transform)
 ```
 
+**CallMember.cs**
+
+```csharp
+    /*
+     *  created by shenjun
+     */
+    
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using XLua;
+    
+    namespace shenjun
+    {
+    	public class CallMember : MonoBehaviour {
+            
+            LuaEnv luaEnv = new LuaEnv();
+    
+    		void Start () {
+                luaEnv.DoString("require 'CallMember'");
+    
+    		}
+    
+    		void Update () {
+                if(luaEnv != null)
+                {
+                    luaEnv.Tick();
+                }
+    		}
+    
+            private void OnDestroy()
+            {
+                luaEnv.Dispose();
+            }
+        }
+    }
+```
+
