@@ -236,7 +236,72 @@
 
 ####2）、映射到Interface
 
-
+```csharp
+    /*
+     *  created by shenjun
+     */
+    
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using XLua;
+    
+    namespace shenjun
+    {
+    	public class TableToInterface : MonoBehaviour {
+    
+            LuaEnv luaEnv = new LuaEnv();
+    
+    		void Start () {
+    
+                luaEnv.DoString("require 'TableLua'");
+    
+                // 引用类型映射 代码生成器会生成一个实例
+                IStudent iTable = luaEnv.Global.Get<IStudent>("student");
+    
+                // 修改table中某键的值
+                luaEnv.Global.SetInPath<int>("student.age", 20);
+    
+                string _name = iTable.name;
+                int age = iTable.age;
+                string sex = iTable.Sex;
+    
+                Debug.Log(string.Format("name :{0}, age :{1}, sex :{2}", _name, age, sex));
+    
+                // 引用类型映射
+                iTable.name = "xz";
+                Debug.Log(luaEnv.Global.GetInPath<string>("student.name"));
+    
+                int result = iTable.totalScore(100, 200);
+                Debug.Log(result);
+    		}
+    		
+    		void Update () {
+                if(luaEnv != null)
+                {
+                    luaEnv.Tick();
+                }
+    		}
+    
+            private void OnDestroy()
+            {
+                luaEnv.Dispose();
+            }
+    
+            [CSharpCallLua]
+            interface IStudent
+            {
+                string name { get; set; }
+                int age { get; set; }
+                string Sex { get; set; }
+    
+                //string get_Sex();
+    
+                int totalScore(int a, int b);
+            }
+        }
+    }
+```
 
 ---
 
