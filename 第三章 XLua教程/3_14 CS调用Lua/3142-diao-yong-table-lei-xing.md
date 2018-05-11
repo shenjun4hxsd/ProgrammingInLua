@@ -283,3 +283,65 @@
     }
 ```
 
+####四、映射到LuaTable类型
+
+```csharp
+    /*
+     *  created by shenjun
+     */
+    
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
+    using UnityEngine;
+    using XLua;
+    
+    namespace shenjun
+    {
+    	public class TableToLuaTable : MonoBehaviour {
+    
+            LuaEnv luaEnv = new LuaEnv();
+    
+    		void Start () {
+                luaEnv.DoString("require 'TableLua'");
+    
+                LuaTable table = luaEnv.Global.Get<LuaTable>("student");
+                string _name = table.Get<string>("name");
+                int age = table.Get<int>("age");
+                string sex = table.Get<string>("Sex");
+    
+                Debug.Log(string.Format("name :{0}, age :{1}, sex :{2}", _name, age, sex));
+    
+                Debug.Log("Length:" + table.Length);  // 3
+    
+                List<int> scores = luaEnv.Global.Get<List<int>>("student");
+                Debug.Log("Total Scores :" + scores.Aggregate((a, b) => a + b));
+    
+                var list = table.GetKeys();
+                foreach (var item in list)
+                {
+                    Debug.Log(item);
+                }
+    
+                int csharpScore = table.Get<int, int>(1);
+                int unityScore = table.Get<int, int>(2);
+                int shaderScore = table.Get<int, int>(3);
+                Debug.Log("csharpScore : " + csharpScore + ", unityScore : " + unityScore + ", shaderScore : " + shaderScore);
+    
+                LuaFunction func = table.Get<LuaFunction>("totalScore");
+                object[] results = func.Call(table, 100, 200);
+                Debug.Log(results[0]);
+            }
+    		
+    		void Update () {
+    			
+    		}
+    
+            private void OnDestroy()
+            {
+                luaEnv.Dispose();
+            }
+        }
+    }
+```
+
