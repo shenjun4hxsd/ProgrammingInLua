@@ -53,6 +53,10 @@
     }
 ```
 
+####二、调用Lua Table类型
+
+
+
 
 ```csharp
     using UnityEngine;
