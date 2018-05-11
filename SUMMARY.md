@@ -69,7 +69,7 @@
   * [3.13 xLua的配置](第三章 XLua教程/3_13 xLua的配置.md)
   * [3.14 CS调用Lua](第三章 XLua教程/3_14 CS调用Lua.md)
     * [3.141 调用基本类型](第三章 XLua教程/3_14 CS调用Lua/3141-diao-yong-ji-ben-lei-xing.md)
-    * 3.142 调用Table类型
+    * [3.142 调用Table类型](第三章 XLua教程/3_14 CS调用Lua/3142-diao-yong-table-lei-xing.md)
     * 3.143 调用Function
   * [3.15 Lua调用CS](第三章 XLua教程/3_15 Lua调用CS.md)
   * [3.16 载入Lua脚本](第三章 XLua教程/3_16 载入Lua脚本.md)
