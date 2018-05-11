@@ -76,9 +76,10 @@
     * [3.152 调用静态成员](第三章 XLua教程/3_15 Lua调用CS/3152-diao-yong-jing-tai-cheng-yuan.md)
     * [3.153 调用实例成员](第三章 XLua教程/3_15 Lua调用CS/3153-diao-yong-shi-li-cheng-yuan.md)
     * [3.154 调用父类成员](第三章 XLua教程/3_15 Lua调用CS/3154-diao-yong-fu-lei-cheng-yuan.md)
-    * [3.155 Ref、Out、Param参数](第三章 XLua教程/3_15 Lua调用CS/3155-refoutparamcan-shu.md)
+    * [3.155 Ref、Out参数](第三章 XLua教程/3_15 Lua调用CS/3155-refoutparamcan-shu.md)
     * [3.156 调用重载方法](第三章 XLua教程/3_15 Lua调用CS/3156-diao-yong-zhong-zai-fang-fa.md)
     * [3.157 使用运算符重载](第三章 XLua教程/3_15 Lua调用CS/3157-shi-yong-yun-suan-fu-zhong-zai.md)
     * [3.158 调用有默认参数方法](第三章 XLua教程/3_15 Lua调用CS/3158-diao-yong-you-mo-ren-can-shu-fang-fa.md)
+    * [3.159 Params参数](第三章 XLua教程/3_15 Lua调用CS/3159-paramcan-shu.md)
   * [3.16 载入Lua脚本](第三章 XLua教程/3_16 载入Lua脚本.md)
 
