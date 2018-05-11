@@ -1,6 +1,6 @@
 ##调用静态成员
 
-CallStatic.lua.txt
+**CallStatic.lua.txt**
 
 ```lua
     --访问静态属性
@@ -19,3 +19,30 @@ CallStatic.lua.txt
         CS.UnityEngine.Object.Destroy(obj)
     end
 ```
+
+CallStatic.cs
+
+```csharp
+    /*
+     *  created by shenjun
+     */
+    
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using XLua;
+    
+    namespace shenjun
+    {
+    	public class CallStatic : MonoBehaviour {
+    
+    		void Start () {
+                LuaEnv luaEnv = new LuaEnv();
+                luaEnv.DoString("require 'CallStatic'");
+                luaEnv.Dispose();
+    		}
+        }
+    }
+```
+
+🔚
