@@ -83,5 +83,6 @@
     * [3.159 Params参数](第三章 XLua教程/3_15 Lua调用CS/3159-paramcan-shu.md)
     * [3.1510 调用扩展方法](第三章 XLua教程/3_15 Lua调用CS/31510-diao-yong-kuo-zhan-fang-fa.md)
     * [3.1511 调用泛型方法](第三章 XLua教程/3_15 Lua调用CS/31511-diao-yong-fan-xing-fang-fa.md)
+    * [3.1512 调用枚举类型](第三章 XLua教程/3_15 Lua调用CS/31512-diao-yong-mei-ju-lei-xing.md)
   * [3.16 载入Lua脚本](第三章 XLua教程/3_16 载入Lua脚本.md)
 
