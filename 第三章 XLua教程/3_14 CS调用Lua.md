@@ -53,7 +53,7 @@
     }
 ```
 
-BasicLua.lua.txt
+**BasicLua.lua.txt**
 
 ```lua
     a = 1
@@ -71,8 +71,67 @@ BasicLua.lua.txt
 
 ####二、调用Lua Table类型
 
+#####1)、映射到class和struct
 
+```csharp
+    /*
+     *  created by shenjun
+     */
+    
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using XLua;
+    
+    namespace shenjun
+    {
+    	public class TableToClass : MonoBehaviour {
+    
+            LuaEnv luaEnv = new LuaEnv();
+    
+    		void Start () {
+    
+                luaEnv.DoString("require 'TableLua'");
+    
+                // 对应public字段，table的属性可以多于或少于class的字段，没有对应的使用该类型的默认值
+                Student xm = luaEnv.Global.Get<Student>("student");
+                Debug.Log(xm);
+    			
+    		}
+    		
+    		void Update () {
+                if(luaEnv != null)
+                {
+                    luaEnv.Tick();
+                }
+    		}
+    
+            private void OnDestroy()
+            {
+                luaEnv.Dispose();
+            }
+    
+            class Student
+            {
+                public string name;
+                public int age;
+                public string Sex { get; set; } // 无法对应table中的键
+    
+                public override string ToString()
+                {
+                    return string.Format("name : {0}, age : {1}, sex : {2}", name, age, Sex);
+                }
+    
+                //public string get_Sex()
+                //{
+                //    return "";
+                //}
+            }
+        }
+    }
+```
 
+---
 
 ```csharp
     using UnityEngine;
