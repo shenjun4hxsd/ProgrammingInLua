@@ -21,3 +21,49 @@
     print("===========", mon)
     callEnum:EnemyAttack(mon)
 ```
+
+**CallCSEnum.cs**
+
+```csharp
+    /*
+     *  created by shenjun
+     */
+    
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using XLua;
+    
+    namespace shenjun
+    {
+        public class CallEnum : MonoBehaviour {
+    
+            public EnemyType myType = EnemyType.Boss;
+    
+            void Start () {
+                LuaEnv luaEnv = new LuaEnv();
+                luaEnv.DoString("require 'CallCSEnum'");
+                luaEnv.Dispose();
+            }
+    
+            void Update () {
+                
+            }
+    
+            public void EnemyAttack(EnemyType type)
+            {
+                Debug.Log("EnemyType : " + type);
+            }
+        }
+    
+        [LuaCallCSharp]
+        public enum EnemyType
+        {
+            Monster,
+            Boss,
+            NPC,
+        }
+    }
+```
+
+🔚
