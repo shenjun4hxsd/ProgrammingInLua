@@ -1,5 +1,25 @@
 ##创建对象
 
+NewObjFunc.lua.txt
+
+```lua
+    function New()
+        local obj = CS.UnityEngine.GameObject()
+        return obj
+    end
+    
+    function New(name)
+        local obj = CS.UnityEngine.GameObject(name)
+        return obj
+    end
+    
+    function NewToParent(parent)
+        local obj = CS.UnityEngine.GameObject()
+        obj.transform:SetParent(parent)
+        return obj
+    end
+```
+
 ```csharp
     /*
      *  created by shenjun
