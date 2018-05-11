@@ -71,6 +71,22 @@
 
 ####二、调用Lua Table类型
 
+**TableLua.lua.txt**
+
+```lua
+    student = {
+        name = "xm", age = 18, Sex = "man",
+        80, 90, 95,
+        getSex = function(self)
+            return "人妖"
+        end,
+    
+        totalScore = function(self, a, b)
+            return a + b;
+        end
+    }
+```
+
 #####1)、映射到class和struct
 
 ```csharp
