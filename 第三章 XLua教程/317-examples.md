@@ -117,3 +117,88 @@
         OnPanelClick(eventData)
     end
 ```
+
+**LuaUIEventGlobal.cs**
+
+```csharp
+    /*
+     *  created by shenjun
+     */
+    
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using UnityEngine.EventSystems;
+    using System;
+    using XLua;
+    
+    namespace shenjun
+    {
+        [CSharpCallLua]
+        public delegate void AwakeSet(LuaUIEventGlobal self);
+    
+        [CSharpCallLua]
+        public delegate void OnPanelClick(PointerEventData eventData);
+    
+        public class LuaUIEventGlobal : MonoBehaviour, IPointerDownHandler {
+    
+            LuaEnv luaEnv = new LuaEnv();
+    
+            AwakeSet luaAwake;
+            Action luaStart;
+            Action luaUpdate;
+            Action luaOnDestroy;
+    
+    
+            OnPanelClick onPanelClickDel;
+    
+            private void Awake()
+            {
+                luaEnv.DoString("require 'UIEventGlobal'");
+    
+                luaAwake = luaEnv.Global.Get<AwakeSet>("Awake");
+                luaAwake(this);
+    
+                luaStart = luaEnv.Global.Get<Action>("Start");
+                luaUpdate = luaEnv.Global.Get<Action>("Update");
+                luaOnDestroy = luaEnv.Global.Get<Action>("OnDestroy");
+    
+                onPanelClickDel = luaEnv.Global.Get<OnPanelClick>("OnPanelClick");
+            }
+    
+            void Start () {
+                luaStart();
+            }
+    
+            void Update () {
+                luaUpdate();
+            }
+    
+            private void OnDestroy()
+            {
+                luaAwake = null;
+                luaStart = null;
+                luaUpdate = null;
+                luaOnDestroy();
+    			luaOnDestroy = null;
+                onPanelClickDel = null;
+    
+                luaEnv.Dispose();
+            }
+    
+            public void OnPointerDown(PointerEventData eventData)
+            {
+                if (onPanelClickDel != null)
+                onPanelClickDel(eventData);
+    
+            }
+        }
+    }
+```
+
+**LuaUIEventLocal.cs**
+
+
+```csharp
+
+```
