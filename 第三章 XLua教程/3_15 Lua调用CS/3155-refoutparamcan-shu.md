@@ -1,4 +1,4 @@
-##Ref、Out、Param参数
+##Ref、Out参数
 
 **RefOutParam.lua.txt**
 
