@@ -75,5 +75,6 @@
     * [3.151 创建对象](第三章 XLua教程/3_15 Lua调用CS/3151-chuang-jian-dui-xiang.md)
     * [3.152 调用静态成员](第三章 XLua教程/3_15 Lua调用CS/3152-diao-yong-jing-tai-cheng-yuan.md)
     * [3.153 调用实例成员](第三章 XLua教程/3_15 Lua调用CS/3153-diao-yong-shi-li-cheng-yuan.md)
+    * [3.154 调用父类成员](第三章 XLua教程/3_15 Lua调用CS/3154-diao-yong-fu-lei-cheng-yuan.md)
   * [3.16 载入Lua脚本](第三章 XLua教程/3_16 载入Lua脚本.md)
 
