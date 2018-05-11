@@ -15,3 +15,44 @@
        print(v)
    end
 ```
+
+**Params.cs**
+
+```csharp
+    /*
+     *  created by shenjun
+     */
+    
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using XLua;
+    
+    namespace shenjun
+    {
+        public class Params : MonoBehaviour
+        {
+    
+            public string msg = "a b C#d";
+    
+            void Start()
+            {
+                LuaEnv luaEnv = new LuaEnv();
+                luaEnv.DoString("require 'Params'");
+                luaEnv.Dispose();
+            }
+    
+            void Update()
+            {
+    
+            }
+    
+            public string[] Split(string s, params string[] chs)
+            {
+                return s.Split(chs, System.StringSplitOptions.RemoveEmptyEntries);
+            }
+        }
+    }
+```
+
+🔚
