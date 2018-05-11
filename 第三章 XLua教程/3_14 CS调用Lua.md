@@ -53,6 +53,22 @@
     }
 ```
 
+BasicLua.lua.txt
+
+```lua
+    a = 1
+    b = 1.5
+    c = 'hello world'
+    d = true
+    
+    e = {
+        ["f"] = { ["name"] = "shenjun" },
+        "unity"
+    }
+    
+    --f = { 2, 3 }
+```
+
 ####二、调用Lua Table类型
 
 
