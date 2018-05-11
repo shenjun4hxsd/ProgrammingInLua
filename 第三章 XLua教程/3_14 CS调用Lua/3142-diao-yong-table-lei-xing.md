@@ -345,3 +345,109 @@
     }
 ```
 
+```csharp
+    /*
+     *  created by shenjun
+     */
+    
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
+    using UnityEngine;
+    using XLua;
+    
+    namespace shenjun
+    {
+    	public class TableToLuaTable2 : MonoBehaviour {
+    
+            [CSharpCallLua]
+            public delegate int AddDel(LuaTable self, int a, int b);
+            [CSharpCallLua]
+            public delegate string GetSexDel();
+    
+            public TextAsset luaText;
+    
+            LuaEnv luaEnv = new LuaEnv();
+            LuaTable luaTableGlobal;
+    
+            LuaTable luaTableLocal;
+    
+            GetSexDel luaGetSex;
+            AddDel luaAdd;
+    
+    
+    		void Start () {
+    
+                #region 全局table元表
+                luaTableGlobal = luaEnv.NewTable();
+    
+                // 设置检索元表 为全局
+                LuaTable meta = luaEnv.NewTable();
+                meta.Set("__index", luaEnv.Global);
+                luaTableGlobal.SetMetaTable(meta);
+                meta.Dispose();
+    
+                luaEnv.DoString(luaText.text, "LuaBehaviour", luaTableGlobal);
+    
+                string _name = luaTableGlobal.GetInPath<string>("student.name");
+                int age = luaTableGlobal.GetInPath<int>("student.age");
+                string sex = luaTableGlobal.GetInPath<string>("student.Sex");
+    
+                Debug.Log(string.Format("1 name :{0}, age :{1}, sex :{2}", _name, age, sex));
+    
+                luaGetSex = luaTableGlobal.GetInPath<GetSexDel>("student.getSex");
+                if (luaGetSex != null)
+                    Debug.Log("1 : " + luaGetSex()) ;
+    
+                luaAdd = luaTableGlobal.GetInPath<AddDel>("student.totalScore");
+                if (luaAdd != null)
+                    Debug.Log("1 : " + luaAdd(luaEnv.NewTable() ,100, 200));
+    
+                #endregion
+    
+                #region 局部table元表
+                luaTableLocal = luaEnv.NewTable();
+    
+                luaEnv.DoString(luaText.text);
+                LuaTable metaContent = luaEnv.Global.Get<LuaTable>("student");
+    
+                meta = luaEnv.NewTable();
+                meta.Set("__index", metaContent);
+                luaTableLocal.SetMetaTable(meta);
+                meta.Dispose();
+    
+                _name = luaTableLocal.Get<string>("name");
+                age = luaTableLocal.Get<int>("age");
+                sex = luaTableLocal.Get<string>("Sex");
+    
+                Debug.Log(string.Format("2 name :{0}, age :{1}, sex :{2}", _name, age, sex));
+    
+                luaGetSex = luaTableLocal.Get<GetSexDel>("getSex");
+                if(luaGetSex != null)
+                {
+                    Debug.Log("2 : " + luaGetSex());
+                }
+    
+                luaAdd = luaTableLocal.Get<AddDel>("totalScore");
+                if (luaAdd != null)
+                    Debug.Log("2 : " + luaAdd(luaEnv.NewTable(), 500, 600));
+    
+                #endregion
+    
+    
+            }
+    		
+    		void Update () {
+    			
+    		}
+    
+            private void OnDestroy()
+            {
+                luaGetSex = null;
+                luaAdd = null;
+                luaEnv.Dispose();
+            }
+        }
+    }
+```
+
