@@ -139,3 +139,87 @@
         }
     }
 ```
+
+####二、映射到LuaFunction
+
+```csharp
+    /*
+     *  created by shenjun
+     */
+    
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using XLua;
+    
+    namespace shenjun
+    {
+    	public class FunctionToLuaFunction : MonoBehaviour {
+    
+            LuaEnv luaEnv = new LuaEnv();
+    
+    		void Start () {
+    
+                luaEnv.DoString("require 'FunctionLua'");
+    
+                NoParam();
+                HaveParam();
+                HaveReturnString();
+                HaveReturnFunction();
+                HaveMultiReturn();
+            }
+    		
+    		void Update () {
+    			
+    		}
+    
+            private void OnDestroy()
+            {
+                luaEnv.Dispose();
+            }
+    
+            #region 无参数
+            void NoParam()
+            {
+                LuaFunction del = luaEnv.Global.Get<LuaFunction>("NoParam");
+                del.Call();
+            }
+            #endregion
+    
+            #region 有参数
+            void HaveParam()
+            {
+                LuaFunction del = luaEnv.Global.Get<LuaFunction>("HaveParam");
+                del.Call(10, 20);
+            }
+            #endregion
+    
+            #region 有返回值是字符串
+            void HaveReturnString()
+            {
+                LuaFunction del = luaEnv.Global.Get<LuaFunction>("ReturnString");
+                object[] r = del.Call();
+                Debug.Log(r[0]);
+            }
+            #endregion
+    
+            #region 有返回值是方法
+            void HaveReturnFunction()
+            {
+                LuaFunction del = luaEnv.Global.Get<LuaFunction>("ReturnFunction");
+                object[] result = del.Call();
+                ((LuaFunction)result[0]).Call();
+            }
+            #endregion
+    
+            #region 多返回值
+            void HaveMultiReturn()
+            {
+                LuaFunction del = luaEnv.Global.Get<LuaFunction>("ReturnMultiValue");
+                object[] result = del.Call();
+                Debug.Log("result :" + (bool)result[0] + ", " + (string)result[1] + ", " + int.Parse(result[2]+"") + ", " + (string)result[3]);
+            }
+            #endregion
+        }
+    }
+```
