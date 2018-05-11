@@ -1,6 +1,6 @@
 ##创建对象
 
-NewObjFunc.lua.txt
+**NewObjFunc.lua.txt**
 
 ```lua
     function New()
@@ -19,6 +19,8 @@ NewObjFunc.lua.txt
         return obj
     end
 ```
+
+**NewObj.cs**
 
 ```csharp
     /*
