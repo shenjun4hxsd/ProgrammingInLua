@@ -72,5 +72,6 @@
     * [3.142 调用Table类型](第三章 XLua教程/3_14 CS调用Lua/3142-diao-yong-table-lei-xing.md)
     * [3.143 调用Function](第三章 XLua教程/3_14 CS调用Lua/3143-diao-yong-function.md)
   * [3.15 Lua调用CS](第三章 XLua教程/3_15 Lua调用CS.md)
+    * [3.151 创建对象](第三章 XLua教程/3_15 Lua调用CS/3151-chuang-jian-dui-xiang.md)
   * [3.16 载入Lua脚本](第三章 XLua教程/3_16 载入Lua脚本.md)
 
