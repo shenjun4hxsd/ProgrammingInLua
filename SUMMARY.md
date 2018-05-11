@@ -81,5 +81,6 @@
     * [3.157 使用运算符重载](第三章 XLua教程/3_15 Lua调用CS/3157-shi-yong-yun-suan-fu-zhong-zai.md)
     * [3.158 调用有默认参数方法](第三章 XLua教程/3_15 Lua调用CS/3158-diao-yong-you-mo-ren-can-shu-fang-fa.md)
     * [3.159 Params参数](第三章 XLua教程/3_15 Lua调用CS/3159-paramcan-shu.md)
+    * [3.1510 调用扩展方法](第三章 XLua教程/3_15 Lua调用CS/31510-diao-yong-kuo-zhan-fang-fa.md)
   * [3.16 载入Lua脚本](第三章 XLua教程/3_16 载入Lua脚本.md)
 
