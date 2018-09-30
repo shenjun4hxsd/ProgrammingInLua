@@ -21,6 +21,9 @@
         void Start () {
             LuaEnv luaenv = new LuaEnv();
             luaenv.DoString("CS.UnityEngine.Debug.Log('hello world')");
+            
+            // DoString返回将包含两个object， 一个是double类型的1， 一个是string类型的“hello”
+            // object[] ret = luaenv.DoString("print(‘hello’)\r\nreturn 1")
             luaenv.Dispose();
         }
     }
