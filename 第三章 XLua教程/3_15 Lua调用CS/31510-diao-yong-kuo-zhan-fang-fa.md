@@ -29,10 +29,6 @@
                 luaEnv.DoString("require 'ExtensionMethod'");
                 luaEnv.Dispose();
             }
-    
-            void Update () {
-                
-            }
         }
     
         [LuaCallCSharp]

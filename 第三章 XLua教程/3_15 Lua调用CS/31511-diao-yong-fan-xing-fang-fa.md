@@ -35,10 +35,6 @@
                 luaEnv.Dispose();
             }
     
-            void Update () {
-                
-            }
-    
             public Camera GetCamera()
             {
                 return this.GetComponent<Camera>();

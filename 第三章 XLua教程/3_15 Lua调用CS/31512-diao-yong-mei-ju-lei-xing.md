@@ -46,10 +46,6 @@
                 luaEnv.Dispose();
             }
     
-            void Update () {
-                
-            }
-    
             public void EnemyAttack(EnemyType type)
             {
                 Debug.Log("EnemyType : " + type);

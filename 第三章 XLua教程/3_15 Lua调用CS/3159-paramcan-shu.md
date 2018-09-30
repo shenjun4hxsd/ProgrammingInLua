@@ -42,11 +42,6 @@
                 luaEnv.Dispose();
             }
     
-            void Update()
-            {
-    
-            }
-    
             public string[] Split(string s, params string[] chs)
             {
                 return s.Split(chs, System.StringSplitOptions.RemoveEmptyEntries);

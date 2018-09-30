@@ -34,10 +34,6 @@
                 luaEnv.Dispose();
             }
     
-            void Update () {
-                
-            }
-    
             public void DefaultValueMethod(int num = 0)
             {
                 Debug.Log("num :" + num);
