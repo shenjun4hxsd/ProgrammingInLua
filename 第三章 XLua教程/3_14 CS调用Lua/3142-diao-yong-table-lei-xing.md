@@ -323,7 +323,7 @@
                     Debug.Log(item);
                 }
     
-                int csharpScore = table.Get<int, int>(1);
+                int csharpScore = table.Get<int, int>(1); // 键是int类型，值是int类型，键是1的数据
                 int unityScore = table.Get<int, int>(2);
                 int shaderScore = table.Get<int, int>(3);
                 Debug.Log("csharpScore : " + csharpScore + ", unityScore : " + unityScore + ", shaderScore : " + shaderScore);
