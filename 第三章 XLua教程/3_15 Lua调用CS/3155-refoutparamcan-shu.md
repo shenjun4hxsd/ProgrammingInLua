@@ -36,10 +36,6 @@
                 luaEnv.Dispose();
             }
     
-            void Update () {
-                
-            }
-    
             public void RefOutParamFunc(string s, ref int a, out int b, ref int c)
             {
                 b = 1;
