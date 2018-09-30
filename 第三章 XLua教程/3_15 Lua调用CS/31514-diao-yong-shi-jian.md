@@ -64,11 +64,7 @@
                 onValueChanged = null;
                 luaEnv.Dispose();
             }
-    
-            void Update () {
-                
-            }
-    
+        
             public void Test()
             {
                 Debug.Log("CS Func");
