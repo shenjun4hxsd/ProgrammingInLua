@@ -13,11 +13,6 @@
     
         public int tick = 0; //如果是private的，在lua设置xlua.private_accessible(CS.HotfixTest)后即可访问
     
-        // Use this for initialization
-        void Start()
-        {
-        }
-    
         // Update is called once per frame
         void Update()
         {
