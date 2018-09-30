@@ -28,8 +28,7 @@
     namespace shenjun
     {
         public class RefOutParam : MonoBehaviour {
-    
-    
+
             void Start () {
                 LuaEnv luaEnv = new LuaEnv();
                 luaEnv.DoString("require 'RefOutParam'");
