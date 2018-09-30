@@ -35,7 +35,7 @@
                         end
                     }
     	        ";
-        // Use this for initialization
+        
         void Start()
         {
             LuaEnv luaenv = new LuaEnv();
