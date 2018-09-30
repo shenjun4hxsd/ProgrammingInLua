@@ -249,10 +249,6 @@
                     luaStart();
             }
     
-            void Update () {
-                
-            }
-    
             private void OnDestroy()
             {
                 luaEnv.Dispose();
