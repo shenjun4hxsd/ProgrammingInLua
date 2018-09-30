@@ -52,6 +52,7 @@
                 scriptEnv.Set(injection.name, injection.value);
             }
 
+            // 加载一个代码块，但不执行，只返回类型可以指定为一个delegate或者一个LuaFunction
             // 第一个参数：执行的lua字符串
             // 第二个参数：发生error时的debug显示信息中使用，指明某某代码块的某行错误；
             // 第三个参数：为这个代码块；
