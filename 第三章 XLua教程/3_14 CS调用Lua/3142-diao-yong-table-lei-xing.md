@@ -270,10 +270,6 @@
                     Debug.Log(item);
                 }
             }
-    		
-    		void Update () {
-    
-    		}
     
             private void OnDestroy()
             {
@@ -332,10 +328,6 @@
                 object[] results = func.Call(table, 100, 200);
                 Debug.Log(results[0]);
             }
-    		
-    		void Update () {
-    			
-    		}
     
             private void OnDestroy()
             {
@@ -433,13 +425,7 @@
                     Debug.Log("2 : " + luaAdd(luaEnv.NewTable(), 500, 600));
     
                 #endregion
-    
-    
             }
-    		
-    		void Update () {
-    			
-    		}
     
             private void OnDestroy()
             {
