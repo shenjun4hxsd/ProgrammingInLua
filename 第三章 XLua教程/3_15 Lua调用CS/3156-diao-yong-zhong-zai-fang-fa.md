@@ -36,10 +36,6 @@
                 luaEnv.Dispose();
             }
     
-            void Update () {
-                
-            }
-    
             public void Func()
             {
                 Debug.Log("Func NoParam");
