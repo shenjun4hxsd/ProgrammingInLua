@@ -57,6 +57,7 @@
             // 第三个参数：为这个代码块；
             luaEnv.DoString(luaScript.text, "LuaBehaviour", scriptEnv);
 
+            // 使用LuaTable的Get方法进行映射到C#的委托
             Action luaAwake = scriptEnv.Get<Action>("awake");
             scriptEnv.Get("start", out luaStart);
             scriptEnv.Get("update", out luaUpdate);
