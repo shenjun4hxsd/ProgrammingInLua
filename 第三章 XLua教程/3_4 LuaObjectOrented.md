@@ -52,12 +52,6 @@
             calc.Mult = 100;
             Debug.Log("sum(*100)=" + calc.Add(1, 2));
         }
-    
-        // Update is called once per frame
-        void Update()
-        {
-    
-        }
     }
 ```
 
