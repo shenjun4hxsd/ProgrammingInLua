@@ -1,5 +1,7 @@
 ##热更新
 
+####1、制作打包工具
+
 **Editor目录下CreateAssetBundle.cs**
 
 ```csharp
@@ -276,10 +278,6 @@
                 // 运行程序
     
                 StartCoroutine(LoadRemoteProfile(LoadAsset));
-            }
-    
-            void Update()
-            {
             }
     
             private void OnDestroy()
