@@ -51,10 +51,6 @@
                 luaEnv.DoString("require 'CallCSParent'");
                 luaEnv.Dispose();
     		}
-    
-    		void Update () {
-                
-    		}
     	}
     
         public class Parent : MonoBehaviour
