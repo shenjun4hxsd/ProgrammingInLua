@@ -168,10 +168,6 @@
                 HaveReturnFunction();
                 HaveMultiReturn();
             }
-    		
-    		void Update () {
-    			
-    		}
     
             private void OnDestroy()
             {
