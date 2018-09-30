@@ -137,11 +137,6 @@
     
             luaenv.Dispose();
         }
-    	
-    	// Update is called once per frame
-    	void Update () {
-    	
-    	}
     }
 ```
 
