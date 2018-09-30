@@ -38,7 +38,7 @@
             scriptEnv = luaEnv.NewTable();
 
             LuaTable meta = luaEnv.NewTable();
-            // LuaTable添加键值对
+            // meta 添加键值对
             meta.Set("__index", luaEnv.Global);
             scriptEnv.SetMetaTable(meta);
             meta.Dispose();
