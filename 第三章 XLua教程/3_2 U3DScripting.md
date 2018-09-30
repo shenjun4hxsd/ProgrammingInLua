@@ -35,20 +35,25 @@
 
         void Awake()
         {
-            scriptEnv = luaEnv.NewTable();
+            scriptEnv = luaEnv.NewTable();// luaEnv.NewTable()构造一个table
 
             LuaTable meta = luaEnv.NewTable();
-            // meta 添加键值对
+            // meta 添加键值对: meta = { __Index = luaEnv.Global }
             meta.Set("__index", luaEnv.Global);
             scriptEnv.SetMetaTable(meta);
+            // 销毁meta
             meta.Dispose();
 
+            // 将当前对象保存到table中： scriptEnv = { self = this }
             scriptEnv.Set("self", this);
+            // 将植入的对象保存到table中
             foreach (var injection in injections)
             {
                 scriptEnv.Set(injection.name, injection.value);
             }
 
+            // 第一个参数：执行的lua字符串
+            // 第二个参数：
             luaEnv.DoString(luaScript.text, "LuaBehaviour", scriptEnv);
 
             Action luaAwake = scriptEnv.Get<Action>("awake");
