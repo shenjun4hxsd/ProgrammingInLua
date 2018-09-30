@@ -11,7 +11,6 @@
     public class SignatureLoaderTest : MonoBehaviour {
         public static string PUBLIC_KEY = "BgIAAACkAABSU0ExAAQAAAEAAQBVDDC5QJ+0uSCJA+EysIC9JBzIsd6wcXa+FuTGXcsJuwyUkabwIiT2+QEjP454RwfSQP8s4VZE1m4npeVD2aDnY4W6ZNJe+V+d9Drt9b+9fc/jushj/5vlEksGBIIC/plU4ZaR6/nDdMIs/JLvhN8lDQthwIYnSLVlPmY1Wgyatw==";
     
-        // Use this for initialization
         void Start () {
             LuaEnv luaenv = new LuaEnv();
     #if UNITY_EDITOR
@@ -48,10 +47,5 @@
             ");
             luaenv.Dispose();
         }
-    	
-    	// Update is called once per frame
-    	void Update () {
-    	
-    	}
     }
 ```
