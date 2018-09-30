@@ -43,12 +43,6 @@
                 luaenv.DoString("CS.XLuaTest.RawObjectTest.PrintType(CS.XLuaTest.IntObject(1234))");
                 luaenv.Dispose();
             }
-    
-            // Update is called once per frame
-            void Update()
-            {
-    
-            }
         }
     }
 ```
