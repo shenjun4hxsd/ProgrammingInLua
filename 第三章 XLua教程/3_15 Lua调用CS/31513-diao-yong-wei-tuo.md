@@ -58,10 +58,6 @@
                 luaEnv.DoString("require 'CallCSDelegate'");
             }
     
-            void Update () {
-                
-            }
-    
             private void OnDestroy()
             {
                 del = null;
