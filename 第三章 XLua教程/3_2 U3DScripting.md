@@ -53,7 +53,8 @@
             }
 
             // 第一个参数：执行的lua字符串
-            // 第二个参数：
+            // 第二个参数：发生error时的debug显示信息中使用，指明某某代码块的某行错误；
+            // 第三个参数：为这个代码块；
             luaEnv.DoString(luaScript.text, "LuaBehaviour", scriptEnv);
 
             Action luaAwake = scriptEnv.Get<Action>("awake");
