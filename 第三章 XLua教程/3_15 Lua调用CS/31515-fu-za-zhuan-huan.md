@@ -64,15 +64,9 @@
     
             void Start()
             {
-    
                 LuaEnv luaEnv = new LuaEnv();
                 luaEnv.DoString("require 'ComplexConvert'");
                 luaEnv.Dispose();
-            }
-    
-            void Update()
-            {
-    
             }
         }
     
