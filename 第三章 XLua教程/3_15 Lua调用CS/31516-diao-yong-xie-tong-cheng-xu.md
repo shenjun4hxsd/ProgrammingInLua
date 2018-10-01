@@ -68,7 +68,7 @@
     coroutine.resume(co)
     print("status : ", coroutine.status(co))
     
-    -- 协同程序处理dead状态，再次唤醒，返回false及一条错误信息
+    -- 协同程序处于dead状态，再次唤醒，返回false及一条错误信息
     print(coroutine.resume(co))
     
     ]]
